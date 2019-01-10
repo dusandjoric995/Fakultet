@@ -1334,6 +1334,7 @@ layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout drawer_header
 layout fragment_craftsman_request
+layout fragment_repair_request
 layout fragment_user_request
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include

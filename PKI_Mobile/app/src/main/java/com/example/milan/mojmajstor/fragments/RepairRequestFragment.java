@@ -1,6 +1,7 @@
 package com.example.milan.mojmajstor.fragments;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +13,7 @@ import com.example.milan.mojmajstor.utils.Data;
 
 import java.util.ArrayList;
 
-public class RepairRequestFragment Fragment{
+public class RepairRequestFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,5 +29,6 @@ public class RepairRequestFragment Fragment{
     @Override
     public void onResume() {
         super.onResume();
+
     }
 }

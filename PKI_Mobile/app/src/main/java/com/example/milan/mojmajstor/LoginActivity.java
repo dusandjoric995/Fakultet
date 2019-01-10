@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etPassword;
     private Button btLogin;
     private AppCompatActivity thisActivity;
+    private Data data;
 
     public static enum UserType {
         CRAFTSMAN,
@@ -44,8 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btLogin = findViewById(R.id.btLogin);
         thisActivity = this;
-
-        Data.initialize();
+        data = Data.getInstance();
     }
 
     @Override
@@ -58,18 +58,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                if(Data.users.containsKey(username)){
-                    if(Data.users.containsValue(password)){
-
-                        User currentUser = new User("Dusan", "Djoric", "dusandjoric995@gmail.com", "dusan", "dusan");
-                        Data.currentUser = currentUser;
+                User user = data.containsUsername(password);
+                if(user != null){
+                    if(data.checkPassword(user, password)){
+                        data.currentUser = user;
                         Intent mainActivityIntent = new Intent(thisActivity, MainActivity.class);
-                        if(Data.users.get(username).equals("milan") || Data.users.get(username).equals("zoran")){
-                            mainActivityIntent.putExtra("UserType", UserType.CRAFTSMAN);
-                        }
-                        else{
-                            mainActivityIntent.putExtra("UserType", UserType.USER);
-                        }
                         thisActivity.startActivity(mainActivityIntent);
                         thisActivity.setResult(RESULT_OK);
                         thisActivity.finish();

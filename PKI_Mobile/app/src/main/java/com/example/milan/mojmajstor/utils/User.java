@@ -1,5 +1,7 @@
 package com.example.milan.mojmajstor.utils;
 
+import com.example.milan.mojmajstor.LoginActivity;
+
 public class User {
 
     private String name;
@@ -7,13 +9,15 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private LoginActivity.UserType userType;
 
-    public User(String name, String surname, String email, String username, String password) {
+    public User(String name, String surname, String email, String username, String password, LoginActivity.UserType userType) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.userType =userType;
     }
 
     public String getName() {
@@ -54,5 +58,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LoginActivity.UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(LoginActivity.UserType userType) {
+        this.userType = userType;
+    }
+
+    public boolean checkPassword(String password){
+        return this.password == password;
+    }
+
+    public boolean checkUsername(String username){
+        return this.username == username;
     }
 }

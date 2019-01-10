@@ -13,15 +13,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.milan.mojmajstor.fragments.MainFragmentController;
+import com.example.milan.mojmajstor.utils.Data;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private LoginActivity.UserType userType;
     private SmoothActionBarDrawerToggle toggle;
     private AppCompatActivity thisActivity;
+    private Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         MainFragmentController.initialize(getSupportFragmentManager());
         thisActivity = this;
+        data = Data.getInstance();
 
-        userType = (LoginActivity.UserType) getIntent().getSerializableExtra("UserType");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.activity_main);
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         Menu navigationDrawerMenu = navigationView.getMenu();
         navigationDrawerMenu.clear();
-        switch (userType){
+        switch (data.currentUser.getUserType()){
             case CRAFTSMAN:{
                 MainFragmentController.setMainFragment(MainFragmentController.craftsmanRequestFragment);
                 break;
@@ -82,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         navigationDrawerMenu.add(R.id.menu_item_drawer_group_bottom, R.id.menu_item_drawer_logout, Menu.NONE, getString(R.string.logout)).setIcon(R.drawable.ic_logout);
-
+        TextView tvProfileName = findViewById(R.id.tvProfileName);
+        tvProfileName.setText(data.currentUser.getName() + " " + data.currentUser.getSurname());
     }
 
     private class SmoothActionBarDrawerToggle extends ActionBarDrawerToggle {

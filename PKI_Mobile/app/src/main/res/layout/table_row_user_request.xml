@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tlUR"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        android:id="@+id/trUR"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/cbURSelected"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvURDescription"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"></TextView>
+
+        <TextView
+            android:id="@+id/tvURCraftsman"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"></TextView>
+
+        <TextView
+            android:id="@+id/tvURDate"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"></TextView>
+
+        <TextView
+            android:id="@+id/tvURStatus"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"></TextView>
+    </TableRow>
+
+</TableLayout>

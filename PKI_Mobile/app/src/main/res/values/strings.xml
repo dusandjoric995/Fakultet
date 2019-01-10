@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My Craftsman</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_header">My Craftsman</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="todo">TODO</string>
+    <string name="not_registred_register_now">Not registred? Register now!</string>
+    <string name="ur_status">Status</string>
+    <string name="ur_date">Date</string>
+    <string name="ur_craftsman">Craftsman</string>
+    <string name="ur_description">Description</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search_craftsman">Search craftsman</string>
+    <string name="user_requests">User requests</string>
+    <string name="logout">Logout</string>
+    <string name="repair_requests">Repair requests</string>
+</resources>

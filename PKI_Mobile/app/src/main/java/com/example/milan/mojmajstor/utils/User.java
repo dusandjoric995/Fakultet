@@ -75,4 +75,8 @@ public class User {
     public boolean checkUsername(String username){
         return this.username == username;
     }
+
+    public String getNameAndSurname(){
+        return name + " " + surname;
+    }
 }

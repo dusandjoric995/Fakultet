@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.fragments.MainFragmentController;
@@ -68,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawerMenu.clear();
         switch (data.currentUser.getUserType()){
             case CRAFTSMAN:{
-                MainFragmentController.setMainFragment(MainFragmentController.craftsmanRequestFragment);
+                MainFragmentController.setMainFragment(MainFragmentController.craftsmanRequestFragment, null);
                 break;
             }
             case USER:{
                 navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_repair_requests, Menu.NONE, getString(R.string.user_requests)).setIcon(R.drawable.ic_repair_requests).setCheckable(true);
                 navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_search_craftsman, Menu.NONE, getString(R.string.search_craftsman)).setIcon(R.drawable.ic_search_craftsman).setCheckable(true);
                 navigationView.setCheckedItem(R.id.menu_item_drawer_repair_requests);
-                MainFragmentController.setMainFragment(MainFragmentController.userRequestFragment);
+                MainFragmentController.setMainFragment(MainFragmentController.userRequestFragment, null);
                 break;
             }
             case GUEST:{
@@ -84,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         navigationDrawerMenu.add(R.id.menu_item_drawer_group_bottom, R.id.menu_item_drawer_logout, Menu.NONE, getString(R.string.logout)).setIcon(R.drawable.ic_logout);
-        TextView tvProfileName = findViewById(R.id.tvProfileName);
-        tvProfileName.setText(data.currentUser.getName() + " " + data.currentUser.getSurname());
+        LinearLayout llDrawerHeader = (LinearLayout) getLayoutInflater().inflate(R.layout.drawer_header, null);
+        TextView tvProfileName = llDrawerHeader.findViewById(R.id.tvProfileName);
+        tvProfileName.setText(data.currentUser.getNameAndSurname());
     }
 
     private class SmoothActionBarDrawerToggle extends ActionBarDrawerToggle {
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     thisActivity.finish();
                 }
                 else if (nextAction instanceof Fragment){
-                    MainFragmentController.setMainFragment((Fragment) nextAction);
+                    MainFragmentController.setMainFragment((Fragment) nextAction, null);
                 }
                 nextAction = null;
             }

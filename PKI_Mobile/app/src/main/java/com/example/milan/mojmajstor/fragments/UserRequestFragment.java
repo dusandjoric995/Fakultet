@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
@@ -27,13 +28,14 @@ public class UserRequestFragment extends Fragment {
     private TextView tvStatus;
     private CheckBox cbSelected;
     private TableLayout tableLayout;
-    private TableLayout tableRow;
+    private TableLayout tableRowLayout;
     private ImageButton btAdditionalOptions;
     private PopupMenu.OnMenuItemClickListener popupMenuListener;
     private ArrayList<CheckBox> checkBoxArrayList;
     private View fragmentView;
     boolean even;
     int checked_count;
+    private Data data;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -43,7 +45,9 @@ public class UserRequestFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         fragmentView = view;
         tableLayout = fragmentView.findViewById(R.id.tlUserRequests);
-        btAdditionalOptions = fragmentView.findViewById(R.id.btURAdditionalOptions);        even = true;
+        btAdditionalOptions = fragmentView.findViewById(R.id.btURAdditionalOptions);
+        data = Data.getInstance();
+        even = true;
         popupMenuListener = new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -52,11 +56,11 @@ public class UserRequestFragment extends Fragment {
                         ArrayList<Integer> toRemove = new ArrayList<>();
                         for(int i = 0, j = 0; i < checkBoxArrayList.size(); i++, j++){
                             if(checkBoxArrayList.get(i).isChecked()){
-                                Data.userRequests.remove(j);
+                                data.userRequests.remove(j);
                                 j--;
                             }
                         }
-                        inflateTable(fragmentView, Data.userRequests);
+                        inflateTable(fragmentView, data.userRequests);
                         return false;
                     }
                     default:{
@@ -81,7 +85,7 @@ public class UserRequestFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        inflateTable(fragmentView, Data.userRequests);
+        inflateTable(fragmentView, data.userRequests);
     }
 
     public void inflateTable(View view, ArrayList<UserRequest> userRequests){
@@ -90,26 +94,26 @@ public class UserRequestFragment extends Fragment {
         checkBoxArrayList.clear();
         btAdditionalOptions.setClickable(false);
         btAdditionalOptions.setImageResource(android.R.color.transparent);
-        for(UserRequest userRequest : userRequests){
-            tableRow = (TableLayout) view.inflate(getActivity(), R.layout.table_row_user_request, null);
-            tvDescription = tableRow.findViewById(R.id.tvURDescription);
-            tvCraftsman = tableRow.findViewById(R.id.tvURCraftsman);
-            tvDate = tableRow.findViewById(R.id.tvURDate);
-            tvStatus = tableRow.findViewById(R.id.tvURStatus);
-            cbSelected = tableRow.findViewById(R.id.cbURSelected);
+        for(final UserRequest userRequest : userRequests){
+            tableRowLayout = (TableLayout) view.inflate(getActivity(), R.layout.table_row_user_request, null);
+            tvDescription = tableRowLayout.findViewById(R.id.tvURDescription);
+            tvCraftsman = tableRowLayout.findViewById(R.id.tvURCraftsman);
+            tvDate = tableRowLayout.findViewById(R.id.tvURDate);
+            tvStatus = tableRowLayout.findViewById(R.id.tvURStatus);
+            cbSelected = tableRowLayout.findViewById(R.id.cbURSelected);
             checkBoxArrayList.add(cbSelected);
 
             if(even){
-                tableRow.setBackgroundResource(R.color.rowEven);
+                tableRowLayout.setBackgroundResource(R.color.rowEven);
                 even = false;
             }
             else{
-                tableRow.setBackgroundResource(R.color.rowOdd);
+                tableRowLayout.setBackgroundResource(R.color.rowOdd);
                 even = true;
             }
 
             tvDescription.setText(userRequest.getDescription());
-            tvCraftsman.setText(userRequest.getCraftsman());
+            tvCraftsman.setText(userRequest.getCraftsman().getNameAndSurname());
             tvDate.setText(userRequest.getDate());
             tvStatus.setText(userRequest.getStatus());
 
@@ -130,8 +134,17 @@ public class UserRequestFragment extends Fragment {
                     }
                 }
             });
+            TableRow tableRow = tableRowLayout.findViewById(R.id.trUR);
+            tableRow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("UserRequest", userRequest);
+                    MainFragmentController.setMainFragment(MainFragmentController.repairRequestFragment, bundle);
+                }
+            });
 
-            tableLayout.addView(tableRow);
+            tableLayout.addView(tableRowLayout);
         }
     }
 }

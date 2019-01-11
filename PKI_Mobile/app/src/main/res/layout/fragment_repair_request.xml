@@ -1,6 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignTop="@id/llRepairRequest"
+        android:layout_marginTop="-55dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/tvRepairRequests"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="9.5"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:text="@string/request_details"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRepairRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:weightSum="10">
+
+        <TableLayout
+            android:id="@+id/tlRepairRequest"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9.5">
+
+            <TableRow
+                android:background="@color/rowEven"
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRClient"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_client"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tvRRClientI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRCraftsman"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_craftsman"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvRRCraftsmanI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/rowEven"
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRDate"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_date"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvRRDateI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRDistrict"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_district"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvRRDistrictI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/rowEven"
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRAddress"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_address"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvRRAddressI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"/>
+            </TableRow>
+
+            <TableRow
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRDescription"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_description"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvRRDescriptionI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/rowEven"
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/tvRRStatus"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/rr_status"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvRRStatusI"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@id/llRepairRequest"
+        android:layout_marginBottom="-100dp"
+        android:weightSum="10"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9.5"
+            android:weightSum="10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvRRPaid"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_centerVertical="true"
+                android:text="@string/rr_paid"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRRPaidI"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:textSize="25sp"/>
+
+            <Button
+                android:id="@+id/btRRPay"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_centerVertical="true"
+                android:background="@color/colorAccent"
+                android:text="@string/rr_pay"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignStart="@id/llRepairRequest"
+        android:layout_alignTop="@id/llRepairRequest"
+        android:layout_alignBottom="@id/llRepairRequest"
+        android:layout_alignEnd="@id/llRepairRequest"
+        android:weightSum="10"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9.5"
+            android:background="@drawable/table_border">
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

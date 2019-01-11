@@ -6,7 +6,8 @@
 
     <TableRow
         android:id="@+id/trUR"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true">
 
         <CheckBox
             android:id="@+id/cbURSelected"

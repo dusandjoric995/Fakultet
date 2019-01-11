@@ -57,11 +57,11 @@
 
     <Button
         android:id="@+id/btLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="137dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="107dp"
         android:text="@string/login" />
 
     <TextView
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="74dp"
         android:text="@string/not_registred_register_now"
         android:textStyle="bold|italic" />
 
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="-109dp"
         android:textColor="@android:color/holo_red_dark"
         android:textStyle="italic" />
 </RelativeLayout>

@@ -19,4 +19,15 @@
     <string name="user_requests">User requests</string>
     <string name="logout">Logout</string>
     <string name="repair_requests">Repair requests</string>
+    <string name="rr_client">Client :</string>
+    <string name="rr_craftsman">Craftsman :</string>
+    <string name="rr_district">District :</string>
+    <string name="rr_address">Address :</string>
+    <string name="rr_description">Description :</string>
+    <string name="rr_status">Status :</string>
+    <string name="rr_paid">Paid :</string>
+    <string name="rr_pay">Pay</string>
+    <string name="rr_date">Date :</string>
+    <string name="request_details">Request details</string>
+    <string name="paying_with_cash">Paying with cash</string>
 </resources>

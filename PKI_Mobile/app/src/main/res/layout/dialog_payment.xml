@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="New payment"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/enter_amount"
+                    android:textSize="18sp"/>
+                <EditText
+                    android:inputType="numberDecimal"
+                    android:id="@+id/etAmount"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:hint="@string/amount"/>
+                <Button
+                    android:id="@+id/btPDCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@string/cancel"/>
+                <Button
+                    android:id="@+id/btPDPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="15dp"
+                    android:text="@string/pay"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_pay"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+        </RelativeLayout>
+
+</LinearLayout>

@@ -26,8 +26,12 @@
     <string name="rr_description">Description :</string>
     <string name="rr_status">Status :</string>
     <string name="rr_paid">Paid :</string>
-    <string name="rr_pay">Pay</string>
+    <string name="rr_pay">New Payment</string>
     <string name="rr_date">Date :</string>
     <string name="request_details">Request details</string>
     <string name="paying_with_cash">Paying with cash</string>
+    <string name="enter_amount">Enter amount :</string>
+    <string name="amount">Amount</string>
+    <string name="cancel">Cancel</string>
+    <string name="pay">Pay</string>
 </resources>

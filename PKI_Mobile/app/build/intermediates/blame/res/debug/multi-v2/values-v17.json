@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\Google Drive\\Projects\\Android Studio PROJECTS\\PKI_Mobile\\PKI_Mobile\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
+            "outputFile": "/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v17/values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Dusan Djoric\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\20d09aa62e070b1dca9eac6cf7e0eb4e\\res\\values-v17\\values-v17.xml",
+                    "source": "/home/djoric/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/54c2113e0fe8c72965f52b9f6abe5aa1/res/values-v17/values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

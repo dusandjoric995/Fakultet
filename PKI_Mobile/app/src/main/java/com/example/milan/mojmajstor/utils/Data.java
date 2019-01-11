@@ -7,8 +7,6 @@ import java.util.HashMap;
 
 public class Data {
 
-
-
     public ArrayList<User> users;
     public ArrayList<UserRequest> userRequests;
     public User currentUser;

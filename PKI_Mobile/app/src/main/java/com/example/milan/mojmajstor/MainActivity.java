@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -49,14 +50,17 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (menuItem.getItemId()){
                     case R.id.menu_item_drawer_repair_requests:{
+                        MainFragmentController.clearBackStack();
                         toggle.setNextAction(MainFragmentController.userRequestFragment);
                         break;
                     }
                     case R.id.menu_item_drawer_search_craftsman:{
+                        MainFragmentController.clearBackStack();
                         toggle.setNextAction(MainFragmentController.craftsmanRequestFragment);
                         break;
                     }
                     case R.id.menu_item_drawer_logout:{
+                        MainFragmentController.clearBackStack();
                         toggle.setNextAction(new LoginActivity());
                         break;
                     }
@@ -69,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawerMenu.clear();
         switch (data.currentUser.getUserType()){
             case CRAFTSMAN:{
+                MainFragmentController.clearBackStack();
                 MainFragmentController.setMainFragment(MainFragmentController.craftsmanRequestFragment, null);
                 break;
             }
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_repair_requests, Menu.NONE, getString(R.string.user_requests)).setIcon(R.drawable.ic_repair_requests).setCheckable(true);
                 navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_search_craftsman, Menu.NONE, getString(R.string.search_craftsman)).setIcon(R.drawable.ic_search_craftsman).setCheckable(true);
                 navigationView.setCheckedItem(R.id.menu_item_drawer_repair_requests);
+                MainFragmentController.clearBackStack();
                 MainFragmentController.setMainFragment(MainFragmentController.userRequestFragment, null);
                 break;
             }
@@ -128,7 +134,13 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else {
-            super.onBackPressed();
+            if(MainFragmentController.fragmentBackStackEmpty()){
+                setResult(RESULT_OK);
+                finish();
+            }
+            else {
+                super.onBackPressed();
+            }
         }
     }
 }

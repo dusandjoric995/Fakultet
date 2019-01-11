@@ -86,6 +86,7 @@ public class UserRequestFragment extends Fragment {
     public void onResume() {
         super.onResume();
         inflateTable(fragmentView, data.userRequests);
+        MainFragmentController.removeBackButton();
     }
 
     public void inflateTable(View view, ArrayList<UserRequest> userRequests){
@@ -102,15 +103,6 @@ public class UserRequestFragment extends Fragment {
             tvStatus = tableRowLayout.findViewById(R.id.tvURStatus);
             cbSelected = tableRowLayout.findViewById(R.id.cbURSelected);
             checkBoxArrayList.add(cbSelected);
-
-            if(even){
-                tableRowLayout.setBackgroundResource(R.color.rowEven);
-                even = false;
-            }
-            else{
-                tableRowLayout.setBackgroundResource(R.color.rowOdd);
-                even = true;
-            }
 
             tvDescription.setText(userRequest.getDescription());
             tvCraftsman.setText(userRequest.getCraftsman().getNameAndSurname());
@@ -135,6 +127,14 @@ public class UserRequestFragment extends Fragment {
                 }
             });
             TableRow tableRow = tableRowLayout.findViewById(R.id.trUR);
+            if(even){
+                tableRow.setBackgroundResource(R.drawable.table_row_even);
+                even = false;
+            }
+            else{
+                tableRow.setBackgroundResource(R.drawable.table_row_odd);
+                even = true;
+            }
             tableRow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

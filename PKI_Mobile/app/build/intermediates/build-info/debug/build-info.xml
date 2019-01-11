@@ -6,8 +6,8 @@
     density="420dpi"
     format="10"
     plugin-version="3.2.1"
-    timestamp="1547175825612"
-    token="-1718969766466205468"
+    timestamp="1547226355499"
+    token="-7226541596267734349"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
@@ -24,98 +24,98 @@
         duration="0" />
 
     <artifact
-        location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+        location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1547158767496"
+        timestamp="1547218026299"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1547221920210"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
         ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1547174058776"
+        timestamp="1547226222989"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1547175503353"
+        timestamp="1547226355499"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1547175825612"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            location="/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
             type="SPLIT" />
     </build>
 

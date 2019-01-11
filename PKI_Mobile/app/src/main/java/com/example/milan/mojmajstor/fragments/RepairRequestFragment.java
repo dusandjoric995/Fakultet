@@ -3,19 +3,16 @@ package com.example.milan.mojmajstor.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
-import com.example.milan.mojmajstor.utils.Data;
+import com.example.milan.mojmajstor.dialogs.PaymentDialog;
 import com.example.milan.mojmajstor.utils.UserRequest;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class RepairRequestFragment extends Fragment {
 
@@ -28,7 +25,7 @@ public class RepairRequestFragment extends Fragment {
     private TextView tvDescription;
     private TextView tvStatus;
     private TextView tvPaid;
-    private Button btPay;
+    private Button btNewPayment;
     private UserRequest userRequest;
 
     @Override
@@ -48,8 +45,17 @@ public class RepairRequestFragment extends Fragment {
         tvDescription = thisView.findViewById(R.id.tvRRDescriptionI);
         tvStatus = thisView.findViewById(R.id.tvRRStatusI);
         tvPaid = thisView.findViewById(R.id.tvRRPaidI);
-        btPay = thisView.findViewById(R.id.btRRPay);
+        btNewPayment = thisView.findViewById(R.id.btRRPay);
         userRequest = (UserRequest) getArguments().getSerializable("UserRequest");
+
+        btNewPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new PaymentDialog(getActivity(), userRequest, tvPaid).show();
+            }
+        });
+
+        MainFragmentController.setBackButton();
     }
 
     @Override
@@ -63,14 +69,12 @@ public class RepairRequestFragment extends Fragment {
         tvDescription.setText(userRequest.getDescription());
         tvStatus.setText(userRequest.getStatus());
         if(userRequest.isCreditCard()){
-            DecimalFormat decimalFormat = new DecimalFormat("0.00");
-            Double correctValue = Double.parseDouble(decimalFormat.format(userRequest.getPaid()));
-            tvPaid.setText(correctValue + " RSD");
-            btPay.setVisibility(View.VISIBLE);
+            tvPaid.setText(String.format("%.2f", userRequest.getPaid()) + " RSD");
+            btNewPayment.setVisibility(View.VISIBLE);
         }
         else{
             tvPaid.setText(getActivity().getResources().getString(R.string.paying_with_cash));
-            btPay.setVisibility(View.GONE);
+            btNewPayment.setVisibility(View.GONE);
         }
     }
 }

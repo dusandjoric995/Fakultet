@@ -1272,6 +1272,7 @@ id status_bar_latest_event_content
 id stretch
 id submenuarrow
 id submit_area
+id svURDetails
 id svUserRequests
 id tabMode
 id tag_transition_group

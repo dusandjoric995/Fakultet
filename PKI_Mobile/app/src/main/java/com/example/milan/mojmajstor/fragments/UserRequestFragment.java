@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -28,7 +31,7 @@ public class UserRequestFragment extends Fragment {
     private TextView tvStatus;
     private CheckBox cbSelected;
     private TableLayout tableLayout;
-    private TableLayout tableRowLayout;
+    private RelativeLayout tableRowLayout;
     private ImageButton btAdditionalOptions;
     private PopupMenu.OnMenuItemClickListener popupMenuListener;
     private ArrayList<CheckBox> checkBoxArrayList;
@@ -89,7 +92,7 @@ public class UserRequestFragment extends Fragment {
         MainFragmentController.removeBackButton();
     }
 
-    public void inflateTable(View view, ArrayList<UserRequest> userRequests){
+    public void inflateTable(final View view, final ArrayList<UserRequest> userRequests){
         checked_count = 0;
         tableLayout.removeAllViews();
         checkBoxArrayList.clear();
@@ -97,7 +100,7 @@ public class UserRequestFragment extends Fragment {
         btAdditionalOptions.setImageResource(android.R.color.transparent);
         for(final UserRequest userRequest : userRequests){
             if(userRequest.getClient().getUsername().equals(data.currentUser.getUsername())) {
-                tableRowLayout = (TableLayout) view.inflate(getActivity(), R.layout.table_row_user_request, null);
+                tableRowLayout = (RelativeLayout) view.inflate(getActivity(), R.layout.table_row_user_request, null);
                 tvDescription = tableRowLayout.findViewById(R.id.tvURDescription);
                 tvCraftsman = tableRowLayout.findViewById(R.id.tvURCraftsman);
                 tvDate = tableRowLayout.findViewById(R.id.tvURDate);
@@ -142,7 +145,6 @@ public class UserRequestFragment extends Fragment {
                         MainFragmentController.setMainFragment(MainFragmentController.repairRequestFragment, bundle);
                     }
                 });
-
                 tableLayout.addView(tableRowLayout);
             }
         }

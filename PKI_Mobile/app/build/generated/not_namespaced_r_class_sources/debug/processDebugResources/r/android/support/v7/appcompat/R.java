@@ -707,23 +707,23 @@ public final class R {
         public static final int start = 0x7f0800cd;
         public static final int submenuarrow = 0x7f0800d0;
         public static final int submit_area = 0x7f0800d1;
-        public static final int tabMode = 0x7f0800d3;
-        public static final int tag_transition_group = 0x7f0800d4;
-        public static final int tag_unhandled_key_event_manager = 0x7f0800d5;
-        public static final int tag_unhandled_key_listeners = 0x7f0800d6;
-        public static final int text = 0x7f0800d7;
-        public static final int text2 = 0x7f0800d8;
-        public static final int textSpacerNoButtons = 0x7f0800d9;
-        public static final int textSpacerNoTitle = 0x7f0800da;
-        public static final int time = 0x7f0800e0;
-        public static final int title = 0x7f0800e1;
-        public static final int titleDividerNoCustom = 0x7f0800e2;
-        public static final int title_template = 0x7f0800e3;
-        public static final int top = 0x7f0800e9;
-        public static final int topPanel = 0x7f0800ea;
-        public static final int uniform = 0x7f08010f;
-        public static final int up = 0x7f080111;
-        public static final int wrap_content = 0x7f080117;
+        public static final int tabMode = 0x7f0800d4;
+        public static final int tag_transition_group = 0x7f0800d5;
+        public static final int tag_unhandled_key_event_manager = 0x7f0800d6;
+        public static final int tag_unhandled_key_listeners = 0x7f0800d7;
+        public static final int text = 0x7f0800d8;
+        public static final int text2 = 0x7f0800d9;
+        public static final int textSpacerNoButtons = 0x7f0800da;
+        public static final int textSpacerNoTitle = 0x7f0800db;
+        public static final int time = 0x7f0800e1;
+        public static final int title = 0x7f0800e2;
+        public static final int titleDividerNoCustom = 0x7f0800e3;
+        public static final int title_template = 0x7f0800e4;
+        public static final int top = 0x7f0800ea;
+        public static final int topPanel = 0x7f0800eb;
+        public static final int uniform = 0x7f080110;
+        public static final int up = 0x7f080112;
+        public static final int wrap_content = 0x7f080118;
     }
     public static final class integer {
         private integer() {}

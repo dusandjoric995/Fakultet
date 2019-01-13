@@ -2,6 +2,7 @@ package com.example.milan.mojmajstor;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.milan.mojmajstor.fragments.MainFragmentController;
 import com.example.milan.mojmajstor.utils.Data;
+import com.example.milan.mojmajstor.utils.ToastWriter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case USER:{
-                navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_repair_requests, Menu.NONE, getString(R.string.user_requests)).setIcon(R.drawable.ic_repair_requests).setCheckable(true);
+                navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_repair_requests, Menu.NONE, getString(R.string.repair_requests)).setIcon(R.drawable.ic_repair_requests).setCheckable(true);
                 navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_search_craftsman, Menu.NONE, getString(R.string.search_craftsman)).setIcon(R.drawable.ic_search_craftsman).setCheckable(true);
                 navigationView.setCheckedItem(R.id.menu_item_drawer_repair_requests);
                 MainFragmentController.clearBackStack();

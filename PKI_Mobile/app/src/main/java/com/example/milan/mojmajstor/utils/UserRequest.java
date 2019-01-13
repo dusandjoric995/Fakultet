@@ -1,6 +1,7 @@
 package com.example.milan.mojmajstor.utils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class UserRequest implements Serializable {
     private String description;
@@ -12,8 +13,9 @@ public class UserRequest implements Serializable {
     private String address;
     private boolean creditCard;
     private double paid;
+    private double price;
 
-    public UserRequest(String description, User craftsman, String date, String status, User client, String district, String address, boolean creditCard, double paid) {
+    public UserRequest(String description, User craftsman, String date, String status, User client, String district, String address, boolean creditCard, double paid, double price) {
         this.description = description;
         this.craftsman = craftsman;
         this.date = date;
@@ -23,6 +25,7 @@ public class UserRequest implements Serializable {
         this.address = address;
         this.creditCard = creditCard;
         this.paid = paid;
+        this.price = price;
     }
 
     public String getDescription() {
@@ -95,5 +98,13 @@ public class UserRequest implements Serializable {
 
     public void setPaid(double paid) {
         this.paid = paid;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

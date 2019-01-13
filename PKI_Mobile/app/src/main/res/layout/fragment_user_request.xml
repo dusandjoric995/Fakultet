@@ -5,122 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/llUserRequest"
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tlUserRequestsAll"
         android:layout_width="match_parent"
-        android:layout_height="430dp"
+        android:layout_height="460dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="45dp">
+
+        <TableRow
+            android:id="@+id/trURHeader"
+            android:background="@drawable/repair_request_table_header">
+
+            <ImageButton
+                android:id="@+id/btURAdditionalOptions"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_column="0"
+                android:background="@drawable/repair_request_table_header"
+                android:gravity="center"
+                android:src="@android:drawable/ic_menu_more"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="27dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ur_description"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ur_craftsman"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ur_date"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_column="4"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ur_status"
+                android:textColor="@android:color/white"/>
+        </TableRow>
+
+        <ScrollView
+            android:id="@+id/svUserRequests"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:id="@+id/tlUserRequests"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
+    </TableLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tlUserRequestsAll"
+        android:layout_alignTop="@id/tlUserRequestsAll"
+        android:layout_alignBottom="@id/tlUserRequestsAll"
+        android:layout_alignEnd="@id/tlUserRequestsAll"
+        android:background="@drawable/table_border">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvRepairRequests"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignTop="@id/tlUserRequestsAll"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
-        android:gravity="center"
-        android:weightSum="10">
-
-        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/tlUserRequestsAll"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="9.5">
-
-            <TableRow
-                android:id="@+id/trURHeader"
-                android:background="@color/colorPrimary">
-
-                <ImageButton
-                    android:id="@+id/btURAdditionalOptions"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center"
-                    android:src="@android:drawable/ic_menu_more"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="27dp"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/ur_description"
-                    android:textColor="@android:color/white"></TextView>
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/ur_craftsman"
-                    android:textColor="@android:color/white"></TextView>
-
-                <TextView
-                    android:layout_width="45dp"
-                    android:layout_column="3"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/ur_date"
-                    android:textColor="@android:color/white"></TextView>
-
-                <TextView
-                    android:layout_width="25dp"
-                    android:layout_column="4"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/ur_status"
-                    android:textColor="@android:color/white"></TextView>
-            </TableRow>
-
-            <ScrollView
-                android:id="@+id/svUserRequests"
-                android:layout_height="match_parent">
-
-                <TableLayout
-                    android:id="@+id/tlUserRequests"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"></TableLayout>
-            </ScrollView>
-        </TableLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_alignTop="@id/llUserRequest"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-55dp"
-        android:gravity="center"
-        android:weightSum="10">
-
-        <TextView
-            android:id="@+id/tvRepairRequests"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="9.5"
-            android:textAlignment="center"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:text="@string/repair_requests"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignStart="@id/llUserRequest"
-        android:layout_alignTop="@id/llUserRequest"
-        android:layout_alignBottom="@id/llUserRequest"
-        android:layout_alignEnd="@id/llUserRequest"
-        android:weightSum="10"
-        android:gravity="center">
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="9.5"
-            android:background="@drawable/table_border">
-        </RelativeLayout>
-    </LinearLayout>
-
-
-
+        android:layout_marginTop="-65dp"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:text="@string/repair_requests"/>
 
 </RelativeLayout>

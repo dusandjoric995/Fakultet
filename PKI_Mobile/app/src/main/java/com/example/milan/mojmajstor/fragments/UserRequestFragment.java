@@ -96,55 +96,55 @@ public class UserRequestFragment extends Fragment {
         btAdditionalOptions.setClickable(false);
         btAdditionalOptions.setImageResource(android.R.color.transparent);
         for(final UserRequest userRequest : userRequests){
-            tableRowLayout = (TableLayout) view.inflate(getActivity(), R.layout.table_row_user_request, null);
-            tvDescription = tableRowLayout.findViewById(R.id.tvURDescription);
-            tvCraftsman = tableRowLayout.findViewById(R.id.tvURCraftsman);
-            tvDate = tableRowLayout.findViewById(R.id.tvURDate);
-            tvStatus = tableRowLayout.findViewById(R.id.tvURStatus);
-            cbSelected = tableRowLayout.findViewById(R.id.cbURSelected);
-            checkBoxArrayList.add(cbSelected);
+            if(userRequest.getClient().getUsername().equals(data.currentUser.getUsername())) {
+                tableRowLayout = (TableLayout) view.inflate(getActivity(), R.layout.table_row_user_request, null);
+                tvDescription = tableRowLayout.findViewById(R.id.tvURDescription);
+                tvCraftsman = tableRowLayout.findViewById(R.id.tvURCraftsman);
+                tvDate = tableRowLayout.findViewById(R.id.tvURDate);
+                tvStatus = tableRowLayout.findViewById(R.id.tvURStatus);
+                cbSelected = tableRowLayout.findViewById(R.id.cbURSelected);
+                checkBoxArrayList.add(cbSelected);
 
-            tvDescription.setText(userRequest.getDescription());
-            tvCraftsman.setText(userRequest.getCraftsman().getNameAndSurname());
-            tvDate.setText(userRequest.getDate());
-            tvStatus.setText(userRequest.getStatus());
+                tvDescription.setText(userRequest.getDescription());
+                tvCraftsman.setText(userRequest.getCraftsman().getNameAndSurname());
+                tvDate.setText(userRequest.getDate());
+                tvStatus.setText(userRequest.getStatus());
 
-            cbSelected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if(b){
-                        checked_count++;
-                        btAdditionalOptions.setClickable(true);
-                        btAdditionalOptions.setImageResource(android.R.drawable.ic_menu_more);
-                    }
-                    else{
-                        checked_count--;
-                        if(checked_count == 0){
-                            btAdditionalOptions.setClickable(false);
-                            btAdditionalOptions.setImageResource(android.R.color.transparent);
+                cbSelected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            checked_count++;
+                            btAdditionalOptions.setClickable(true);
+                            btAdditionalOptions.setImageResource(android.R.drawable.ic_menu_more);
+                        } else {
+                            checked_count--;
+                            if (checked_count == 0) {
+                                btAdditionalOptions.setClickable(false);
+                                btAdditionalOptions.setImageResource(android.R.color.transparent);
+                            }
                         }
                     }
+                });
+                TableRow tableRow = tableRowLayout.findViewById(R.id.trUR);
+                if (even) {
+                    tableRow.setBackgroundResource(R.drawable.table_row_even);
+                    even = false;
+                } else {
+                    tableRow.setBackgroundResource(R.drawable.table_row_odd);
+                    even = true;
                 }
-            });
-            TableRow tableRow = tableRowLayout.findViewById(R.id.trUR);
-            if(even){
-                tableRow.setBackgroundResource(R.drawable.table_row_even);
-                even = false;
-            }
-            else{
-                tableRow.setBackgroundResource(R.drawable.table_row_odd);
-                even = true;
-            }
-            tableRow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("UserRequest", userRequest);
-                    MainFragmentController.setMainFragment(MainFragmentController.repairRequestFragment, bundle);
-                }
-            });
+                tableRow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("UserRequest", userRequest);
+                        MainFragmentController.setMainFragment(MainFragmentController.repairRequestFragment, bundle);
+                    }
+                });
 
-            tableLayout.addView(tableRowLayout);
+                tableLayout.addView(tableRowLayout);
+            }
         }
     }
 }

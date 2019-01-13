@@ -2,6 +2,8 @@ package com.example.milan.mojmajstor.utils;
 
 import com.example.milan.mojmajstor.LoginActivity;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String name;
@@ -10,6 +12,9 @@ public class User {
     private String username;
     private String password;
     private LoginActivity.UserType userType;
+    private double rate;
+    private int rateCount;
+    private ArrayList<String> comments;
 
     public User(String name, String surname, String email, String username, String password, LoginActivity.UserType userType) {
         this.name = name;
@@ -18,6 +23,9 @@ public class User {
         this.username = username;
         this.password = password;
         this.userType =userType;
+        this.rate = 0;
+        this.rateCount = 0;
+        this.comments = new ArrayList<>();
     }
 
     public String getName() {
@@ -78,5 +86,33 @@ public class User {
 
     public String getNameAndSurname(){
         return name + " " + surname;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public int getRateCount() {
+        return rateCount;
+    }
+
+    public void setRateCount(int rateCount) {
+        this.rateCount = rateCount;
+    }
+
+    public ArrayList<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<String> comments) {
+        this.comments = comments;
+    }
+
+    public void addComent(String comment){
+        comments.add(comment);
     }
 }

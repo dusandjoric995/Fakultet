@@ -11,22 +11,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
+import com.example.milan.mojmajstor.utils.ToastWriter;
 import com.example.milan.mojmajstor.utils.UserRequest;
 
-import java.text.DecimalFormat;
-
-public class PaymentDialog extends Dialog implements View.OnClickListener {
+public class PaymentDialog extends Dialog {
 
     private UserRequest userRequest;
     private Button btCancel;
     private Button btPay;
+    private Button btNewPaymenn;
     private EditText etAmount;
     private TextView tvPaid;
+    private TextView tvStatus;
+    private Activity thisActivity;
 
-    public PaymentDialog(Activity activity, UserRequest userRequest, TextView tvPaid){
+    public PaymentDialog(Activity activity, UserRequest userRequest, TextView tvPaid, TextView tvStatus, Button btNewPayment){
         super(activity);
+        thisActivity = activity;
         this.userRequest = userRequest;
         this.tvPaid = tvPaid;
+        this.tvStatus = tvStatus;
+        this.btNewPaymenn = btNewPayment;
     }
 
     @Override
@@ -46,7 +51,7 @@ public class PaymentDialog extends Dialog implements View.OnClickListener {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.equals("")){
+                if(s.toString().equals("")){
                     btPay.setEnabled(false);
                 }
                 else{
@@ -71,21 +76,20 @@ public class PaymentDialog extends Dialog implements View.OnClickListener {
         btPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userRequest.setPaid(userRequest.getPaid() + Double.parseDouble(etAmount.getText().toString()));
+                double newPayment = Double.parseDouble(etAmount.getText().toString());
+                if(userRequest.getPaid() + newPayment >= userRequest.getPrice()){
+                    userRequest.setPaid(userRequest.getPrice());
+                    userRequest.setStatus(thisActivity.getResources().getString(R.string.repair_status_paid));
+                    btNewPaymenn.setEnabled(false);
+                }
+                else{
+                    userRequest.setPaid(userRequest.getPaid() + newPayment);
+                }
                 tvPaid.setText(String.format("%.2f", userRequest.getPaid()) + " RSD");
+                tvStatus.setText(userRequest.getStatus());
+                ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.payment_successful));
                 dismiss();
             }
         });
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.btPDCancel:{
-                dismiss();
-                break;
-            }
-        }
-
     }
 }

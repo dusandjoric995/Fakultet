@@ -193,6 +193,12 @@
     <color name="colorAccent">#d81b60</color>
     <color name="colorAccentFaded">#64d81b60</color>
     <color name="colorAccentPressed">#b10443</color>
+    <color name="colorBlue">#1164e9</color>
+    <color name="colorBlueFaded">#641164e9</color>
+    <color name="colorBluePressed">#0d47a5</color>
+    <color name="colorGold">#ffd900</color>
+    <color name="colorGoldFaded">#64ffd900</color>
+    <color name="colorGoldPressed">#e1bf01</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574b</color>
     <color name="colorPrimaryFaded">#64008577</color>
@@ -2011,14 +2017,14 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="amount">Amount</string>
     <string name="app_name">My Craftsman</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="cancel">Cancel</string>
     <string name="character_counter_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
-    <string name="enter_amount">Enter amount :</string>
+    <string name="comment_added">Comment added!</string>
+    <string name="enter_amount">Enter amount</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">android.support.design.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">android.support.design.transformation.FabTransformationSheetBehavior</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -2038,7 +2044,13 @@
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="pay">Pay</string>
     <string name="paying_with_cash">Paying with cash</string>
+    <string name="payment_successful">Payment successful!</string>
+    <string name="rate">Rate</string>
+    <string name="rate_craftsman">Rate craftsman</string>
     <string name="repair_requests">Repair requests</string>
+    <string name="repair_status_approved">Prihvacen</string>
+    <string name="repair_status_paid">Placen</string>
+    <string name="repair_status_refused">Odbijen</string>
     <string name="request_details">Request details</string>
     <string name="rr_address">Address :</string>
     <string name="rr_client">Client :</string>
@@ -2048,16 +2060,17 @@
     <string name="rr_district">District :</string>
     <string name="rr_paid">Paid :</string>
     <string name="rr_pay">New Payment</string>
+    <string name="rr_price">Price :</string>
     <string name="rr_status">Status :</string>
     <string name="search_craftsman">Search craftsman</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="thanks_for_rating">Thanks for rating!</string>
     <string name="todo">TODO</string>
     <string name="ur_craftsman">Craftsman</string>
     <string name="ur_date">Date</string>
     <string name="ur_description">Description</string>
     <string name="ur_status">Status</string>
-    <string name="user_requests">User requests</string>
     <string name="username">Username</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -2069,7 +2082,7 @@
     <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
   </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

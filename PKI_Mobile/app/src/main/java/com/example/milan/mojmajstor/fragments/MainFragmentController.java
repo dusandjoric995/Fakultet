@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.milan.mojmajstor.LoginActivity;
@@ -31,6 +32,7 @@ public class MainFragmentController {
         }
         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }
+
     public static void showLastMainFragment(){
         fragmentManager.popBackStack();
     }

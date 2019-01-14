@@ -3,30 +3,29 @@ package com.example.milan.mojmajstor.dialogs;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.milan.mojmajstor.R;
+import com.example.milan.mojmajstor.utils.RepairRequest;
 import com.example.milan.mojmajstor.utils.ToastWriter;
-import com.example.milan.mojmajstor.utils.UserRequest;
 
 import java.util.ArrayList;
 
 public class RateDialog extends Dialog {
 
-    private UserRequest userRequest;
+    private RepairRequest repairRequest;
     private Button btCancel;
     private Button btRate;
     private int rate;
     private ArrayList<ImageButton> buttonStars;
     private Activity thisActivity;
 
-    public RateDialog(Activity activity, UserRequest userRequest){
+    public RateDialog(Activity activity, RepairRequest repairRequest){
         super(activity);
-        this.userRequest = userRequest;
+        this.repairRequest = repairRequest;
         thisActivity = activity;
     }
 
@@ -75,8 +74,8 @@ public class RateDialog extends Dialog {
         btRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userRequest.getCraftsman().setRateCount(userRequest.getCraftsman().getRateCount() + 1);
-                userRequest.getCraftsman().setRate(userRequest.getCraftsman().getRate() + rate);
+                repairRequest.getCraftsman().setRateCount(repairRequest.getCraftsman().getRateCount() + 1);
+                repairRequest.getCraftsman().setRate(repairRequest.getCraftsman().getRate() + rate);
                 ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.thanks_for_rating));
                 dismiss();
             }

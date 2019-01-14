@@ -65,16 +65,13 @@
                 android:textColor="@android:color/white"/>
         </TableRow>
 
-        <ScrollView
-            android:id="@+id/svUserRequests"
-            android:layout_height="match_parent">
+        <ExpandableListView
+            android:id="@+id/evContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:groupIndicator="@null">
 
-            <TableLayout
-                android:id="@+id/tlUserRequests"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-        </ScrollView>
+        </ExpandableListView>
     </TableLayout>
 
     <RelativeLayout

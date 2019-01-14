@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.milan.mojmajstor.R;
-import com.example.milan.mojmajstor.dialogs.PaymentDialog;
-import com.example.milan.mojmajstor.utils.UserRequest;
 
 public class BackButtonFragment extends Fragment {
 

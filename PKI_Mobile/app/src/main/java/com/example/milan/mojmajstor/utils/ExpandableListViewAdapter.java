@@ -1,12 +1,14 @@
 package com.example.milan.mojmajstor.utils;
 
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TableRow;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
@@ -14,26 +16,36 @@ import com.example.milan.mojmajstor.R;
 import java.util.ArrayList;
 
 public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
-    private ArrayList<UserRequest> userRequests;
+    private ArrayList<RepairRequest> repairRequests;
+    private Context context;
+    private ExpandableListView evContent;
+    private ArrayList<Integer> checkedRequests;
+
+    public ExpandableListViewAdapter(Context context, ExpandableListView evContent, ArrayList<RepairRequest> repairRequests, ArrayList<Integer> checkedReequests) {
+        this.context = context;
+        this.evContent = evContent;
+        this.repairRequests = repairRequests;
+        this.checkedRequests = checkedReequests;
+    }
 
     @Override
     public int getGroupCount() {
-        return userRequests.size();
+        return repairRequests.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return userRequests.size();
+        return 1;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return null;
+        return repairRequests.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return null;
+        return repairRequests.get(childPosition);
     }
 
     @Override
@@ -52,52 +64,58 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        TextView tvDescription = parent.findViewById(R.id.tvURDescription);
-        TextView tvCraftsman = parent.findViewById(R.id.tvURCraftsman);
-        TextView tvDate = parent.findViewById(R.id.tvURDate);
-        TextView tvStatus = parent.findViewById(R.id.tvURStatus);
-        TextView cbSelected = parent.findViewById(R.id.cbURSelected);
-        TextView checkBoxArrayList.add(cbSelected);
+    public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        RepairRequest repairRequest = repairRequests.get(groupPosition);
 
-        tvDescription.setText(userRequest.getDescription());
-        tvCraftsman.setText(userRequest.getCraftsman().getNameAndSurname());
-        tvDate.setText(userRequest.getDate());
-        tvStatus.setText(userRequest.getStatus());
+        if(convertView == null){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.table_row_user_request, null);
+        }
+
+        TextView tvDescription = convertView.findViewById(R.id.tvURDescription);
+        TextView tvCraftsman = convertView.findViewById(R.id.tvURCraftsman);
+        TextView tvDate = convertView.findViewById(R.id.tvURDate);
+        TextView tvStatus = convertView.findViewById(R.id.tvURStatus);
+        CheckBox cbSelected = convertView.findViewById(R.id.cbURSelected);
+        cbSelected.setChecked(false);
+
+        tvDescription.setText(repairRequest.getDescription());
+        tvCraftsman.setText(repairRequest.getCraftsman().getNameAndSurname());
+        tvDate.setText(repairRequest.getDate());
+        tvStatus.setText(repairRequest.getStatus());
 
         cbSelected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    checked_count++;
-                    btAdditionalOptions.setClickable(true);
-                    btAdditionalOptions.setImageResource(android.R.drawable.ic_menu_more);
-                } else {
-                    checked_count--;
-                    if (checked_count == 0) {
-                        btAdditionalOptions.setClickable(false);
-                        btAdditionalOptions.setImageResource(android.R.color.transparent);
-                    }
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    checkedRequests.add(groupPosition);
                 }
             }
         });
-        TableRow tableRow = tableRowLayout.findViewById(R.id.trUR);
-        if (even) {
-            tableRow.setBackgroundResource(R.drawable.table_row_even);
-            even = false;
-        } else {
-            tableRow.setBackgroundResource(R.drawable.table_row_odd);
-            even = true;
+
+        if(groupPosition % 2 == 0){
+            convertView.setBackgroundResource(R.drawable.table_row_even);
         }
+        else{
+            convertView.setBackgroundResource(R.drawable.table_row_odd);
+        }
+
+        return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        return null;
+        if(convertView == null){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.fragment_repair_request, null);
+        }
+        return convertView;
     }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        Log.d("DDJ", "oneExpanded");
+        return true;
     }
+
 }

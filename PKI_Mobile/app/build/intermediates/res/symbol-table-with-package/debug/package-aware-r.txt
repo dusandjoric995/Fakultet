@@ -1154,6 +1154,7 @@ id etAmount
 id etCDComment
 id etPassword
 id etUsername
+id evContent
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1188,7 +1189,6 @@ id line3
 id listMode
 id list_item
 id llDrawerHeader
-id llRepairRequest
 id masked
 id media_actions
 id menu_item_drawer_group_bottom
@@ -1272,8 +1272,6 @@ id status_bar_latest_event_content
 id stretch
 id submenuarrow
 id submit_area
-id svURDetails
-id svUserRequests
 id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -1293,7 +1291,6 @@ id titleDividerNoCustom
 id title_template
 id tlRepairRequest
 id tlUR
-id tlUserRequests
 id tlUserRequestsAll
 id toolbar
 id top
@@ -1310,22 +1307,12 @@ id tvMyCraftsman
 id tvProfileName
 id tvRRAddress
 id tvRRAddressI
-id tvRRClient
-id tvRRClientI
-id tvRRCraftsman
-id tvRRCraftsmanI
-id tvRRDate
-id tvRRDateI
-id tvRRDescription
-id tvRRDescriptionI
 id tvRRDistrict
 id tvRRDistrictI
 id tvRRPaid
 id tvRRPaidI
 id tvRRPrice
 id tvRRPriceI
-id tvRRStatus
-id tvRRStatusI
 id tvRegister
 id tvRepairRequests
 id tvToastMessage

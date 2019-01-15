@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String name;
-    private String surname;
+    private String firstName;
+    private String lastName;
     private String email;
     private String username;
     private String password;
@@ -16,9 +16,9 @@ public class User {
     private int rateCount;
     private ArrayList<String> comments;
 
-    public User(String name, String surname, String email, String username, String password, LoginActivity.UserType userType) {
-        this.name = name;
-        this.surname = surname;
+    public User(String firstName, String lastName, String email, String username, String password, LoginActivity.UserType userType) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -28,20 +28,20 @@ public class User {
         this.comments = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -84,8 +84,8 @@ public class User {
         return this.username == username;
     }
 
-    public String getNameAndSurname(){
-        return name + " " + surname;
+    public String getFirstAndLastName(){
+        return firstName + " " + lastName;
     }
 
     public double getRate() {

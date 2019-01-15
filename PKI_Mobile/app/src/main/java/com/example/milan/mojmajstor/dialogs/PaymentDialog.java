@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
+import com.example.milan.mojmajstor.utils.ExpandableListViewAdapter;
 import com.example.milan.mojmajstor.utils.ToastWriter;
 import com.example.milan.mojmajstor.utils.RepairRequest;
 
@@ -24,14 +25,16 @@ public class PaymentDialog extends Dialog {
     private TextView tvPaid;
     private TextView tvStatus;
     private Activity thisActivity;
+    private ExpandableListViewAdapter adapter;
 
-    public PaymentDialog(Activity activity, RepairRequest repairRequest, TextView tvPaid, TextView tvStatus, Button btNewPayment){
+    public PaymentDialog(Activity activity, RepairRequest repairRequest, TextView tvPaid, ExpandableListViewAdapter adapter, Button btNewPayment){
         super(activity);
         thisActivity = activity;
         this.repairRequest = repairRequest;
         this.tvPaid = tvPaid;
         this.tvStatus = tvStatus;
         this.btNewPaymenn = btNewPayment;
+        this.adapter = adapter;
     }
 
     @Override
@@ -81,12 +84,12 @@ public class PaymentDialog extends Dialog {
                     repairRequest.setPaid(repairRequest.getPrice());
                     repairRequest.setStatus(thisActivity.getResources().getString(R.string.repair_status_paid));
                     btNewPaymenn.setEnabled(false);
+                    adapter.notifyDataSetChanged();
                 }
                 else{
                     repairRequest.setPaid(repairRequest.getPaid() + newPayment);
                 }
                 tvPaid.setText(String.format("%.2f", repairRequest.getPaid()) + " RSD");
-                tvStatus.setText(repairRequest.getStatus());
                 ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.payment_successful));
                 dismiss();
             }

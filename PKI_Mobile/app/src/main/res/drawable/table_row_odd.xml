@@ -3,9 +3,9 @@
     <item
         android:state_enabled="true"
         android:state_pressed="false"
-        android:drawable="@color/rowOdd" />
+        android:drawable="@color/colorRowOdd" />
     <item
         android:state_enabled="true"
         android:state_pressed="true"
-        android:drawable="@color/rowOddPressed" />
+        android:drawable="@color/colorRowOddPressed" />
 </selector>

@@ -2,7 +2,6 @@ package com.example.milan.mojmajstor;
 
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -20,7 +18,6 @@ import android.widget.TextView;
 
 import com.example.milan.mojmajstor.fragments.MainFragmentController;
 import com.example.milan.mojmajstor.utils.Data;
-import com.example.milan.mojmajstor.utils.ToastWriter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawerMenu.add(R.id.menu_item_drawer_group_bottom, R.id.menu_item_drawer_logout, Menu.NONE, getString(R.string.logout)).setIcon(R.drawable.ic_logout);
         LinearLayout llDrawerHeader = (LinearLayout) getLayoutInflater().inflate(R.layout.drawer_header, null);
         TextView tvProfileName = llDrawerHeader.findViewById(R.id.tvProfileName);
-        tvProfileName.setText(data.currentUser.getNameAndSurname());
+        tvProfileName.setText(data.currentUser.getFirstAndLastName());
     }
 
     private class SmoothActionBarDrawerToggle extends ActionBarDrawerToggle {

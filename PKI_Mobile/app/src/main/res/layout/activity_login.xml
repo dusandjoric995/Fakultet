@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:thisActivity=".LoginActivity">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tvRegister2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="145dp"
+        android:text="Forgot password?"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/tvMyCraftsman"
@@ -61,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="107dp"
+        android:layout_marginBottom="67dp"
         android:background="@drawable/button_primary"
         android:text="@string/login"
         android:textColor="@android:color/white" />
@@ -72,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="74dp"
+        android:layout_marginBottom="34dp"
         android:text="@string/not_registred_register_now"
         android:textStyle="bold|italic" />
 

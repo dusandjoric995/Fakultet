@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlRRG"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        android:id="@+id/trRRG"
+        android:layout_height="40dp"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llCheckBox"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="center_vertical"
+            android:gravity="center">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbURSelected"
+                android:focusable="false"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvRRGDescription"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/tvRRGCraftsman"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/tvRRGDate"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/tvRRGStatus"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_column="4"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:focusable="false"/>
+    </TableRow>
+
+    <RelativeLayout
+        android:id="@+id/rlRRCDistanceFooter"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorPrimary">
+    </RelativeLayout>
+
+</RelativeLayout>

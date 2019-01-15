@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btLogin;
     private AppCompatActivity thisActivity;
     private Data data;
+    private TextView tvRegister;
 
     public static enum UserType {
         CRAFTSMAN,
@@ -44,13 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btLogin = findViewById(R.id.btLogin);
+        tvRegister = findViewById(R.id.tvRegister);
         thisActivity = this;
         data = Data.getInstance();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
 
         tvWrongUserOrPass.setText("");
         btLogin.setOnClickListener(new View.OnClickListener() {
@@ -76,5 +73,16 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerActivityIntent = new Intent(thisActivity, RegisterActivity.class);
+                thisActivity.startActivity(registerActivityIntent);
+                thisActivity.setResult(RESULT_OK);
+                thisActivity.finish();
+            }
+        });
+
     }
 }

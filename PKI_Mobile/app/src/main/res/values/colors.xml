@@ -7,14 +7,15 @@
     <color name="colorAccent">#d81b60</color>
     <color name="colorAccentFaded">#64d81b60</color>
     <color name="colorAccentPressed">#b10443</color>
-    <color name="rowEven">#e1fffc</color>
-    <color name="rowEvenPressed">#b9e6e1</color>
-    <color name="rowOdd">#ffffff</color>
-    <color name="rowOddPressed">#eaeaea</color>
+    <color name="colorRowEven">#e1fffc</color>
+    <color name="colorRowEvenPressed">#b9e6e1</color>
+    <color name="colorRowOdd">#ffffff</color>
+    <color name="colorRowOddPressed">#eaeaea</color>
     <color name="colorBlue">#1164e9</color>
     <color name="colorBlueFaded">#641164e9</color>
     <color name="colorBluePressed">#0d47a5</color>
     <color name="colorGold">#ffd900</color>
     <color name="colorGoldFaded">#64ffd900</color>
     <color name="colorGoldPressed">#e1bf01</color>
+    <color name="colorDarkGrey">#898989</color>
 </resources>

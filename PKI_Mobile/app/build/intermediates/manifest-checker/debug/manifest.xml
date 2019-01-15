@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.milan.mojmajstor.MainActivity" >
+        <activity
+            android:name="com.example.milan.mojmajstor.MainActivity"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -30,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.milan.mojmajstor.RegisterActivity" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

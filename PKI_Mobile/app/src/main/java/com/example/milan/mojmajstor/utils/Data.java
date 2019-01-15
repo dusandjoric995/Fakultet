@@ -27,11 +27,11 @@ public class Data {
         users.add(new User("Jelena", "Petrovic", "jelenapetrovic995@gmail.com", "jelena", "jelena", LoginActivity.UserType.CRAFTSMAN));
 
         repairRequests.add(new RepairRequest("Popravka motora", containsUsername("milan"), "10.10.2018.", "Prihvacen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
-        repairRequests.add(new RepairRequest("Popravka vrata", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 2500, 10000));
-        repairRequests.add(new RepairRequest("Popravka kreveta", containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 3500, 10000));
-        repairRequests.add(new RepairRequest("Popravka zida", containsUsername("milan"), "10.10.2018.", "Odbijen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 4500, 10000));
-        repairRequests.add(new RepairRequest("Popravka terase", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 5500, 10000));
-        repairRequests.add(new RepairRequest("Popravka kompjutera",containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 6500, 10000));
+        repairRequests.add(new RepairRequest("Popravka vrata", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
+        repairRequests.add(new RepairRequest("Popravka kreveta", containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
+        repairRequests.add(new RepairRequest("Popravka zida", containsUsername("milan"), "10.10.2018.", "Odbijen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
+        repairRequests.add(new RepairRequest("Popravka terase", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
+        repairRequests.add(new RepairRequest("Popravka kompjutera",containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
         repairRequests.add(new RepairRequest("Popravka baterije", containsUsername("milan"), "10.10.2018.", "Prihvacen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000));
         repairRequests.add(new RepairRequest("Popravka enterijera", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000));
         repairRequests.add(new RepairRequest("Popravka stolice", containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000));

@@ -3,26 +3,22 @@ package com.example.milan.mojmajstor.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.milan.mojmajstor.LoginActivity;
 import com.example.milan.mojmajstor.R;
 
 public class MainFragmentController {
 
     private static FragmentManager fragmentManager;
     private static BackButtonFragment backButtonFragment;
-    public static UserRequestFragment userRequestFragment;
+    public static RepairRequestsFragment userRequestFragment;
     public static CraftsmanRequestFragment craftsmanRequestFragment;
-    public static RepairRequestFragment repairRequestFragment;
+    public static RepairRequestFragmentLegacy repairRequestFragment;
 
     public static void initialize(FragmentManager fm){
         fragmentManager = fm;
-        userRequestFragment = new UserRequestFragment();
+        userRequestFragment = new RepairRequestsFragment();
         craftsmanRequestFragment = new CraftsmanRequestFragment();
-        repairRequestFragment = new RepairRequestFragment();
+        repairRequestFragment = new RepairRequestFragmentLegacy();
         backButtonFragment = new BackButtonFragment();
     }
 

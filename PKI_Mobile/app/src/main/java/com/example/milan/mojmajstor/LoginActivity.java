@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.MainActivity;
+import com.example.milan.mojmajstor.fragments.LoginFragment;
+import com.example.milan.mojmajstor.fragments.MainFragmentController;
 import com.example.milan.mojmajstor.utils.Data;
 import com.example.milan.mojmajstor.R;
 import com.example.milan.mojmajstor.utils.User;
@@ -21,13 +24,7 @@ import com.example.milan.mojmajstor.utils.User;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextView tvWrongUserOrPass;
-    private EditText etUsername;
-    private EditText etPassword;
-    private Button btLogin;
-    private AppCompatActivity thisActivity;
     private Data data;
-    private TextView tvRegister;
 
     public static enum UserType {
         CRAFTSMAN,
@@ -41,48 +38,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        tvWrongUserOrPass = findViewById(R.id.tvWrongUserOrPass);
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btLogin = findViewById(R.id.btLogin);
-        tvRegister = findViewById(R.id.tvRegister);
-        thisActivity = this;
         data = Data.getInstance();
 
-        tvWrongUserOrPass.setText("");
-        btLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                User user = data.containsUsername(password);
-                if(user != null){
-                    if(data.checkPassword(user, password)){
-                        data.currentUser = user;
-                        Intent mainActivityIntent = new Intent(thisActivity, MainActivity.class);
-                        thisActivity.startActivity(mainActivityIntent);
-                        thisActivity.setResult(RESULT_OK);
-                        thisActivity.finish();
-                    }
-                    else{
-                        tvWrongUserOrPass.setText("Wrong password!");
-                    }
-                }
-                else{
-                    tvWrongUserOrPass.setText("Wrong username!");
-                }
-            }
-        });
-
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerActivityIntent = new Intent(thisActivity, RegisterActivity.class);
-                thisActivity.startActivity(registerActivityIntent);
-                thisActivity.setResult(RESULT_OK);
-                thisActivity.finish();
-            }
-        });
+        getSupportFragmentManager().beginTransaction().replace(R.id.flLogin, new LoginFragment()).commit();
 
     }
+
+    /*@Override
+    public void onBackPressed() {
+        if(MainFragmentController.fragmentBackStackEmpty()){
+            setResult(RESULT_OK);
+            finish();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }*/
 }

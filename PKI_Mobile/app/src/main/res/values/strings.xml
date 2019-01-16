@@ -42,4 +42,6 @@
     <string name="repair_status_refused">Odbijen</string>
     <string name="repair_status_approved">Prihvacen</string>
     <string name="first_name">First name</string>
+    <string name="register_button">Register</string>
+    <string name="back">Back</string>
 </resources>

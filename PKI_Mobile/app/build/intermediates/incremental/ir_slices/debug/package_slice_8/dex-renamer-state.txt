@@ -1,4 +1,4 @@
-#Tue Jan 15 17:24:29 CET 2019
+#Wed Jan 16 18:13:11 CET 2019
 base.0=/home/djoric/Desktop/Fakultet/PKI/PKI_Mobile/app/build/intermediates/transforms/dexMerger/debug/8
 path.0=classes.dex
 renamed.0=classes.dex

@@ -13,6 +13,7 @@ public class MainFragmentController {
     public static RepairRequestsFragment userRequestFragment;
     public static CraftsmanRequestFragment craftsmanRequestFragment;
     public static RepairRequestFragmentLegacy repairRequestFragment;
+    public static ProfilePictureFragment profilePictureFragment;
 
     public static void initialize(FragmentManager fm){
         fragmentManager = fm;
@@ -20,6 +21,7 @@ public class MainFragmentController {
         craftsmanRequestFragment = new CraftsmanRequestFragment();
         repairRequestFragment = new RepairRequestFragmentLegacy();
         backButtonFragment = new BackButtonFragment();
+        profilePictureFragment = new ProfilePictureFragment();
     }
 
     public static void setMainFragment(Fragment fragment, Bundle bundle){

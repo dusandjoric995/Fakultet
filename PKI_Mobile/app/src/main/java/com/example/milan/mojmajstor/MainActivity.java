@@ -11,8 +11,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -90,9 +93,22 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         navigationDrawerMenu.add(R.id.menu_item_drawer_group_bottom, R.id.menu_item_drawer_logout, Menu.NONE, getString(R.string.logout)).setIcon(R.drawable.ic_logout);
-        LinearLayout llDrawerHeader = (LinearLayout) getLayoutInflater().inflate(R.layout.drawer_header, null);
+
+        LinearLayout llDrawerHeader = (LinearLayout) navigationView.getHeaderView(0);
         TextView tvProfileName = llDrawerHeader.findViewById(R.id.tvProfileName);
         tvProfileName.setText(data.currentUser.getFirstAndLastName());
+
+        ImageView ivProfilePicture = llDrawerHeader.findViewById(R.id.ivProfilePicture);
+        ivProfilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+                Bundle arguments = new Bundle();
+                arguments.putSerializable("selectedUser", data.currentUser);
+                MainFragmentController.profilePictureFragment.setArguments(arguments);
+                toggle.setNextAction(MainFragmentController.profilePictureFragment);
+            }
+        });
     }
 
     private class SmoothActionBarDrawerToggle extends ActionBarDrawerToggle {

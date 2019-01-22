@@ -1016,9 +1016,15 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable button_accent
 drawable button_back
+drawable button_back_not_pressed
+drawable button_back_pressed
+drawable button_back_register
 drawable button_blue
 drawable button_gold
 drawable button_primary
+drawable button_request
+drawable button_request_not_pressed
+drawable button_request_pressed
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1026,7 +1032,9 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable distancer
-drawable ic_back_arrow
+drawable ic_back_arrow_primary
+drawable ic_back_arrow_white
+drawable ic_build
 drawable ic_comment
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -1107,6 +1115,7 @@ id btCDComment
 id btLogin
 id btPDCancel
 id btPDPay
+id btPRequestRepairOrEditProfile
 id btRDCancel
 id btRDRate
 id btRDRateStar1
@@ -1187,6 +1196,8 @@ id invisible
 id italic
 id item_touch_helper_previous_elevation
 id ivLoginTools
+id ivPProfilePicture
+id ivPRateStar
 id ivProfilePicture
 id labeled
 id largeLabel
@@ -1292,6 +1303,8 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
+id textView2
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1315,6 +1328,10 @@ id transition_scene_layoutid_cache
 id transition_transform
 id tvForgotPassword
 id tvMyCraftsman
+id tvPEmailI
+id tvPProfession
+id tvPProfileName
+id tvPRateValue
 id tvProfileName
 id tvRRCAddress
 id tvRRCAddressI
@@ -1410,6 +1427,7 @@ layout drawer_header
 layout fragment_back_button
 layout fragment_craftsman_request
 layout fragment_login
+layout fragment_profile
 layout fragment_register
 layout fragment_repair_request
 layout fragment_repair_request_legacy
@@ -1488,6 +1506,7 @@ string cancel
 string character_counter_content_description
 string character_counter_pattern
 string comment_added
+string edit_profile
 string enter_amount
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -1510,6 +1529,7 @@ string path_password_strike_through
 string pay
 string paying_with_cash
 string payment_successful
+string profile_e_mail
 string rate
 string rate_craftsman
 string register_button
@@ -1518,6 +1538,7 @@ string repair_status_approved
 string repair_status_paid
 string repair_status_refused
 string request_details
+string request_repair
 string rr_address
 string rr_client
 string rr_craftsman

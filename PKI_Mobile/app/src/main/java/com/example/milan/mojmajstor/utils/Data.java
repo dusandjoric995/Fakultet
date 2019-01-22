@@ -19,12 +19,12 @@ public class Data {
         users = new ArrayList<>();
         repairRequests = new ArrayList<>();
 
-        users.add(new User("Dusan", "Djoric", "dusandjoric995@gmail.com", "dusan", "dusan", LoginActivity.UserType.USER));
-        users.add(new User("Milan", "Djoric", "milandjoric992@gmail.com", "milan", "milan", LoginActivity.UserType.CRAFTSMAN));
-        users.add(new User("Zoran", "Djoric", "zorandjoric958@gmail.com", "zoran", "zoran", LoginActivity.UserType.USER));
-        users.add(new User("Sladjana", "Djoric", "sladjanadjoric959@gmail.com", "sladjana", "sladjana", LoginActivity.UserType.CRAFTSMAN));
-        users.add(new User("Jovana", "Cakic", "jovanacakic995@gmail.com", "jovana", "jovana", LoginActivity.UserType.USER));
-        users.add(new User("Jelena", "Petrovic", "jelenapetrovic995@gmail.com", "jelena", "jelena", LoginActivity.UserType.CRAFTSMAN));
+        users.add(new User("Dusan", "Djoric", "dusandjoric995@gmail.com", "dusan", "dusan", LoginActivity.UserType.USER, "Inzenjer elektrotehnike"));
+        users.add(new User("Milan", "Djoric", "milandjoric992@gmail.com", "milan", "milan", LoginActivity.UserType.CRAFTSMAN, "Limar"));
+        users.add(new User("Zoran", "Djoric", "zorandjoric958@gmail.com", "zoran", "zoran", LoginActivity.UserType.USER, "Masinac"));
+        users.add(new User("Sladjana", "Djoric", "sladjanadjoric959@gmail.com", "sladjana", "sladjana", LoginActivity.UserType.CRAFTSMAN, "Vodoinstaler"));
+        users.add(new User("Jovana", "Cakic", "jovanacakic995@gmail.com", "jovana", "jovana", LoginActivity.UserType.USER, "Diplomirani inzenjer energetike"));
+        users.add(new User("Jelena", "Petrovic", "jelenapetrovic995@gmail.com", "jelena", "jelena", LoginActivity.UserType.CRAFTSMAN, "Stolar"));
 
         repairRequests.add(new RepairRequest("Popravka motora", containsUsername("milan"), "10.10.2018.", "Prihvacen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));
         repairRequests.add(new RepairRequest("Popravka vrata", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000));

@@ -2,9 +2,10 @@ package com.example.milan.mojmajstor.utils;
 
 import com.example.milan.mojmajstor.LoginActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable {
 
     private String firstName;
     private String lastName;
@@ -15,8 +16,9 @@ public class User {
     private double rate;
     private int rateCount;
     private ArrayList<String> comments;
+    private String profession;
 
-    public User(String firstName, String lastName, String email, String username, String password, LoginActivity.UserType userType) {
+    public User(String firstName, String lastName, String email, String username, String password, LoginActivity.UserType userType, String profession) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -26,6 +28,7 @@ public class User {
         this.rate = 0;
         this.rateCount = 0;
         this.comments = new ArrayList<>();
+        this.profession = profession;
     }
 
     public String getFirstName() {
@@ -114,5 +117,13 @@ public class User {
 
     public void addComent(String comment){
         comments.add(comment);
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 }

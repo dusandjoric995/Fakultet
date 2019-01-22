@@ -12,6 +12,6 @@
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/button_back"
-        app:srcCompat="@drawable/ic_back_arrow" />
+        android:background="@drawable/button_back_not_pressed"
+        app:srcCompat="@drawable/ic_back_arrow_white" />
 </RelativeLayout>

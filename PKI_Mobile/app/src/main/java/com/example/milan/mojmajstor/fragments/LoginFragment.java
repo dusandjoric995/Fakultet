@@ -3,8 +3,11 @@ package com.example.milan.mojmajstor.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +51,8 @@ public class LoginFragment extends Fragment {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                etPassword.clearFocus();
+                etUsername.clearFocus();
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 User user = data.containsUsername(username);
@@ -60,11 +65,14 @@ public class LoginFragment extends Fragment {
                         thisActivity.finish();
                     }
                     else{
-                        //tvWrongUserOrPass.setText("Wrong password!");
+                        etPassword.setTransformationMethod(null);
+                        etPassword.setTextColor(getResources().getColor(R.color.colorAccent, null));
+                        etPassword.setText("Wrong password!");
                     }
                 }
                 else{
-                    //tvWrongUserOrPass.setText("Wrong username!");
+                    etUsername.setTextColor(getResources().getColor(R.color.colorAccent, null));
+                    etUsername.setText("Wrong username!");
                 }
             }
         });
@@ -73,6 +81,31 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.flLogin, new RegisterFragment()).commit();
+            }
+        });
+
+        etUsername.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    if(etUsername.getCurrentTextColor() == getResources().getColor(R.color.colorAccent, null)){
+                        etUsername.setText("");
+                        etUsername.setTextColor(getResources().getColor(android.R.color.black, null));
+                    }
+                }
+            }
+        });
+
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    if(etPassword.getCurrentTextColor() == getResources().getColor(R.color.colorAccent, null)){
+                        etPassword.setTransformationMethod(new PasswordTransformationMethod());
+                        etPassword.setText("");
+                        etPassword.setTextColor(getResources().getColor(android.R.color.black, null));
+                    }
+                }
             }
         });
 

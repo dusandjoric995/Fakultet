@@ -44,4 +44,7 @@
     <string name="first_name">First name</string>
     <string name="register_button">Register</string>
     <string name="back">Back</string>
+    <string name="profile_e_mail">E-mail :</string>
+    <string name="request_repair">Request Repair</string>
+    <string name="edit_profile">Edit profile</string>
 </resources>

@@ -184,7 +184,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         if(repairRequest.getPaid() == repairRequest.getPrice()){
             btNewPayment.setEnabled(false);
         }
-        if(repairRequest.getStatus().equals(thisActivity.getResources().getString(R.string.repair_status_refused))){
+        if(repairRequest.getStatus().equals(thisActivity.getResources().getString(R.string.repair_status_refused)) || repairRequest.getStatus().equals(thisActivity.getResources().getString(R.string.repair_status_on_hold))){
             Log.d("DDJ", repairRequest.getStatus());
             btNewPayment.setEnabled(false);
             btRateCraftsman.setEnabled(false);

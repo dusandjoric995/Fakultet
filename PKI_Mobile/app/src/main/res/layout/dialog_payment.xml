@@ -10,7 +10,7 @@
             android:layout_height="40dp"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
-            android:text="New payment"
+            android:text="@string/new_payment"
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center_vertical"

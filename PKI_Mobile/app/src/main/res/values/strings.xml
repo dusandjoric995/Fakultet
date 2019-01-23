@@ -47,4 +47,19 @@
     <string name="profile_e_mail">E-mail :</string>
     <string name="request_repair">Request Repair</string>
     <string name="edit_profile">Edit profile</string>
+    <string name="profession">Profession :</string>
+    <string name="e_mail">E-mail :</string>
+    <string name="new_payment">New payment</string>
+    <string name="new_request">New request</string>
+    <string name="cash">Cash</string>
+    <string name="credit_card">Credit card</string>
+    <string name="confirm_request">Confirm request</string>
+    <string name="add_comment">Add comment</string>
+    <string name="paying_method">Paying method :</string>
+    <string name="address">Address</string>
+    <string name="description">Description</string>
+    <string name="request_sent">Request sent</string>
+    <string name="repair_status_on_hold">Na cekanju</string>
+    <string name="save_changes">Save changes</string>
+    <string name="password_colon">Password :</string>
 </resources>

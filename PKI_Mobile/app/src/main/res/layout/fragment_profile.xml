@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvPProfession"
+        android:id="@+id/tvPProfessionI"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,6 +36,16 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/etPProfessionI"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <ImageView
         android:id="@+id/ivPRateStar"
@@ -70,11 +80,31 @@
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+    <EditText
+        android:id="@+id/etPEmailI"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/etPPasswordI"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tvPPassword"
+        app:layout_constraintTop_toTopOf="@+id/tvPPassword" />
+
     <Button
         android:id="@+id/btPRequestRepairOrEditProfile"
         android:layout_width="130dp"
         android:layout_height="47dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/button_primary"
         android:drawableEnd="@drawable/ic_build"
         android:paddingStart="3dp"
@@ -82,20 +112,70 @@
         android:text="@string/request_repair"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/ivPProfilePicture"
-        app:layout_constraintTop_toBottomOf="@id/ivPRateStar"/>
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/ivPProfilePicture" />
+
+    <Button
+        android:id="@+id/btPSaveChanges"
+        android:layout_width="130dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_primary"
+        android:drawableEnd="@drawable/ic_build"
+        android:paddingStart="3dp"
+        android:paddingEnd="7dp"
+        android:text="@string/save_changes"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/ivPProfilePicture" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/distancer"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/distancer"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btPRequestRepairOrEditProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/etPPasswordI"
+        android:visibility="invisible">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/distancer"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPEmailI"
+        android:visibility="invisible">
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -103,7 +183,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Profesija :"
+        android:text="@string/profession"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPProfileName" />
 
@@ -113,9 +193,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="E-mail :"
+        android:text="@string/e_mail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPProfession" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPProfessionI" />
+
+    <TextView
+        android:id="@+id/tvPPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/password_colon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPEmailI"/>
 
 
 </android.support.constraint.ConstraintLayout>

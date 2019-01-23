@@ -58,7 +58,7 @@ public class NewRequestDialog extends Dialog {
         btNewRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data.repairRequests.add(new RepairRequest(etDescription.getText().toString(), craftsman, "10.10.2018", thisActivity.getResources().getString(R.string.repair_status_on_hold), data.containsUsername("dusan"), etDistrict.getText().toString(), etAddress.getText().toString(), rbCreditCard.isChecked(), 0, 0));
+                data.repairRequests.add(new RepairRequest(etDescription.getText().toString(), craftsman, "10.10.2018", thisActivity.getResources().getString(R.string.repair_status_on_hold), data.currentUser, etDistrict.getText().toString(), etAddress.getText().toString(), rbCreditCard.isChecked(), 0, 0));
                 ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.request_sent));
                 dismiss();
             }

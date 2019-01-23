@@ -52,11 +52,11 @@ public class RateDialog extends Dialog {
                     for(int j = buttonStars.size() - 1; j >= 0; j--){
                         if(j <= finalI){
                             buttonStars.get(j).setBackgroundResource(R.drawable.ic_rate_star_gold);
-                            rate = finalI;
+                            rate = finalI + 1;
                         }
                         else{
                             buttonStars.get(j).setBackgroundResource(R.drawable.ic_rate_star_gold_border);
-                            rate = finalI;
+                            rate = finalI + 1;
                         }
                     }
                     return true;

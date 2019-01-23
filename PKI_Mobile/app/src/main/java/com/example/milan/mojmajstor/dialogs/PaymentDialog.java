@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
-import com.example.milan.mojmajstor.utils.ExpandableListViewAdapter;
+import com.example.milan.mojmajstor.utils.RepairRequestsExpandableListViewAdapter;
 import com.example.milan.mojmajstor.utils.ToastWriter;
 import com.example.milan.mojmajstor.utils.RepairRequest;
 
@@ -25,9 +25,9 @@ public class PaymentDialog extends Dialog {
     private TextView tvPaid;
     private TextView tvStatus;
     private Activity thisActivity;
-    private ExpandableListViewAdapter adapter;
+    private RepairRequestsExpandableListViewAdapter adapter;
 
-    public PaymentDialog(Activity activity, RepairRequest repairRequest, TextView tvPaid, ExpandableListViewAdapter adapter, Button btNewPayment){
+    public PaymentDialog(Activity activity, RepairRequest repairRequest, TextView tvPaid, RepairRequestsExpandableListViewAdapter adapter, Button btNewPayment){
         super(activity);
         thisActivity = activity;
         this.repairRequest = repairRequest;

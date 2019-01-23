@@ -32,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.milan.mojmajstor.RegisterActivity" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

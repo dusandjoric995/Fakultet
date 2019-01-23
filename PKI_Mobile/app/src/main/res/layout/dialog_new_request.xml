@@ -28,7 +28,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/description"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNRHeader" />
@@ -41,7 +41,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:hint="District"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/address"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNRDistrict" />

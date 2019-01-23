@@ -92,9 +92,9 @@
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_alignTop="@id/tlRR"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-65dp"
+        android:layout_marginTop="15dp"
         android:textAlignment="center"
         android:textSize="32sp"
         android:textStyle="bold"

@@ -3,23 +3,17 @@ package com.example.milan.mojmajstor.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.MainActivity;
 import com.example.milan.mojmajstor.R;
-import com.example.milan.mojmajstor.RegisterActivity;
 import com.example.milan.mojmajstor.utils.Data;
 import com.example.milan.mojmajstor.utils.User;
 

@@ -72,4 +72,31 @@ public class Data {
     public void removeRepairRequest(RepairRequest repairRequest) {
         repairRequests.remove(repairRequest);
     }
+
+    public void findSelectedCraftsmen(ArrayList<User> selectedCraftsmen, String name, String profession, User user) {
+        selectedCraftsmen.clear();
+        if(user != null){
+            for(User craftsman : users){
+                if(craftsman.getUserType() == LoginActivity.UserType.CRAFTSMAN && craftsman.getFirstAndLastName().toUpperCase().contains(name.toUpperCase()) && craftsman.getProfession().toUpperCase().contains(profession.toUpperCase()) && relatedCraftsmanAndClient(craftsman, user)){
+                    selectedCraftsmen.add(craftsman);
+                }
+            }
+        }
+        else {
+            for(User craftsman : users){
+                if(craftsman.getUserType() == LoginActivity.UserType.CRAFTSMAN && craftsman.getFirstAndLastName().toUpperCase().contains(name.toUpperCase()) && craftsman.getProfession().toUpperCase().contains(profession.toUpperCase())){
+                    selectedCraftsmen.add(craftsman);
+                }
+            }
+        }
+    }
+
+    private boolean relatedCraftsmanAndClient(User craftsman, User user) {
+        for(RepairRequest repairRequest : repairRequests){
+            if(repairRequest.getCraftsman() == craftsman && repairRequest.getClient() == user){
+                return true;
+            }
+        }
+        return false;
+    }
 }

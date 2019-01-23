@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     case R.id.menu_item_drawer_search_craftsman:{
                         MainFragmentController.clearBackStack();
-                        toggle.setNextAction(MainFragmentController.craftsmanRequestFragment);
+                        toggle.setNextAction(MainFragmentController.searchCraftsmanFragment);
                         break;
                     }
                     case R.id.menu_item_drawer_logout:{
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 Bundle arguments = new Bundle();
-                arguments.putSerializable("selectedUser", data.currentUser);
+                arguments.putSerializable(thisActivity.getResources().getString(R.string.selected_user), data.currentUser);
                 MainFragmentController.profilePictureFragment.setArguments(arguments);
                 toggle.setNextAction(MainFragmentController.profilePictureFragment);
             }

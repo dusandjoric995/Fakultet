@@ -38,6 +38,7 @@
                 android:textSize="14sp"
                 android:gravity="start"
                 android:hint="Write a comment..."
+                android:inputType="textCapSentences"
                 style="@style/FullWidthEditText" />
 
         </RelativeLayout>

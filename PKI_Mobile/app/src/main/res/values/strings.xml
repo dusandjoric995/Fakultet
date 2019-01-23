@@ -47,7 +47,7 @@
     <string name="profile_e_mail">E-mail :</string>
     <string name="request_repair">Request Repair</string>
     <string name="edit_profile">Edit profile</string>
-    <string name="profession">Profession :</string>
+    <string name="profession_colon">Profession :</string>
     <string name="e_mail">E-mail :</string>
     <string name="new_payment">New payment</string>
     <string name="new_request">New request</string>
@@ -62,4 +62,11 @@
     <string name="repair_status_on_hold">Na cekanju</string>
     <string name="save_changes">Save changes</string>
     <string name="password_colon">Password :</string>
+    <string name="show_comments">Show comments</string>
+    <string name="hide_comments">Hide comments</string>
+    <string name="profession">Profession</string>
+    <string name="name">Name</string>
+    <string name="my_craftsmen">My craftsmen</string>
+    <string name="all_craftsmen">All craftsmen</string>
+    <string name="selected_user">Selected user</string>
 </resources>

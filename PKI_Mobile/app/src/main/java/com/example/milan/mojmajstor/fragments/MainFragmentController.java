@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.milan.mojmajstor.R;
+import com.example.milan.mojmajstor.utils.SearchCraftsmanListViewAdapter;
 
 public class MainFragmentController {
 
@@ -14,6 +15,7 @@ public class MainFragmentController {
     public static CraftsmanRequestFragment craftsmanRequestFragment;
     public static RepairRequestFragmentLegacy repairRequestFragment;
     public static ProfilePictureFragment profilePictureFragment;
+    public static SearchCraftsmanFragment searchCraftsmanFragment;
 
     public static void initialize(FragmentManager fm){
         fragmentManager = fm;
@@ -22,6 +24,7 @@ public class MainFragmentController {
         repairRequestFragment = new RepairRequestFragmentLegacy();
         backButtonFragment = new BackButtonFragment();
         profilePictureFragment = new ProfilePictureFragment();
+        searchCraftsmanFragment = new SearchCraftsmanFragment();
     }
 
     public static void setMainFragment(Fragment fragment, Bundle bundle){

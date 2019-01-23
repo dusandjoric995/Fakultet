@@ -1,5 +1,7 @@
 package com.example.milan.mojmajstor.utils;
 
+import android.util.Pair;
+
 import com.example.milan.mojmajstor.LoginActivity;
 
 import java.io.Serializable;
@@ -15,7 +17,7 @@ public class User implements Serializable {
     private LoginActivity.UserType userType;
     private double rate;
     private int rateCount;
-    private ArrayList<String> comments;
+    private ArrayList<Pair<User, String>> comments;
     private String profession;
 
     public User(String firstName, String lastName, String email, String username, String password, LoginActivity.UserType userType, String profession) {
@@ -107,15 +109,15 @@ public class User implements Serializable {
         this.rateCount = rateCount;
     }
 
-    public ArrayList<String> getComments() {
+    public ArrayList<Pair<User, String>> getComments() {
         return comments;
     }
 
-    public void setComments(ArrayList<String> comments) {
+    public void setComments(ArrayList<Pair<User, String>> comments) {
         this.comments = comments;
     }
 
-    public void addComent(String comment){
+    public void addComent(Pair<User, String> comment){
         comments.add(comment);
     }
 

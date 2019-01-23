@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 
 import com.example.milan.mojmajstor.R;
 import com.example.milan.mojmajstor.utils.Data;
-import com.example.milan.mojmajstor.utils.ExpandableListViewAdapter;
+import com.example.milan.mojmajstor.utils.RepairRequestsExpandableListViewAdapter;
 import com.example.milan.mojmajstor.utils.RepairRequest;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class RepairRequestsFragment extends Fragment {
     private PopupMenu.OnMenuItemClickListener popupMenuListener;
     private Data data;
     private ExpandableListView elvRepairRequests;
-    private ExpandableListViewAdapter elvRepairRequestsAdapter;
+    private RepairRequestsExpandableListViewAdapter elvRepairRequestsAdapter;
     ArrayList<RelativeLayout> repairRequestsLayouts;
     ArrayList<RelativeLayout> repairRequestsDetailLayouts;
     ArrayList<RepairRequest> repairRequests;
@@ -46,7 +46,7 @@ public class RepairRequestsFragment extends Fragment {
         repairRequests = data.getCurrentUserRepairRequests();
         checkedRequests = new ArrayList<>();
 
-        elvRepairRequestsAdapter = new ExpandableListViewAdapter(getActivity(), elvRepairRequests, repairRequests, checkedRequests, btAdditionalOptions);
+        elvRepairRequestsAdapter = new RepairRequestsExpandableListViewAdapter(getActivity(), elvRepairRequests, repairRequests, checkedRequests, btAdditionalOptions);
         elvRepairRequests.setAdapter(elvRepairRequestsAdapter);
         btAdditionalOptions.setVisibility(View.INVISIBLE);
 
@@ -85,7 +85,10 @@ public class RepairRequestsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        elvRepairRequestsAdapter.notifyDataSetChanged();
         MainFragmentController.removeBackButton();
+        elvRepairRequestsAdapter.notifyDataSetChanged();
+        for(int i = 0; i < repairRequests.size(); i++){
+            elvRepairRequests.collapseGroup(i);
+        }
     }
 }

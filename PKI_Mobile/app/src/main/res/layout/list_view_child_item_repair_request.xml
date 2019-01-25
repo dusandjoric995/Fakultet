@@ -64,6 +64,27 @@
             android:paddingVertical="4dp">
 
             <TextView
+                android:id="@+id/tvRRCSeverity"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="26dp"
+                android:text="@string/rr_severity"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvRRCSeverityI"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="14sp"
+                android:paddingStart="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:paddingVertical="4dp">
+
+            <TextView
                 android:id="@+id/tvRRCPrice"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"

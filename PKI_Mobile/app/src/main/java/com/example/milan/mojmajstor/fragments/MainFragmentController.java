@@ -5,13 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.milan.mojmajstor.R;
-import com.example.milan.mojmajstor.utils.SearchCraftsmanListViewAdapter;
 
 public class MainFragmentController {
 
     private static FragmentManager fragmentManager;
     private static BackButtonFragment backButtonFragment;
-    public static RepairRequestsFragment userRequestFragment;
+    public static RepairRequestsUserFragment userRequestFragment;
     public static CraftsmanRequestFragment craftsmanRequestFragment;
     public static RepairRequestFragmentLegacy repairRequestFragment;
     public static ProfilePictureFragment profilePictureFragment;
@@ -19,7 +18,7 @@ public class MainFragmentController {
 
     public static void initialize(FragmentManager fm){
         fragmentManager = fm;
-        userRequestFragment = new RepairRequestsFragment();
+        userRequestFragment = new RepairRequestsUserFragment();
         craftsmanRequestFragment = new CraftsmanRequestFragment();
         repairRequestFragment = new RepairRequestFragmentLegacy();
         backButtonFragment = new BackButtonFragment();

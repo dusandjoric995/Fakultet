@@ -20,17 +20,17 @@ public class User implements Serializable {
     private ArrayList<Pair<User, String>> comments;
     private String profession;
 
-    public User(String firstName, String lastName, String email, String username, String password, LoginActivity.UserType userType, String profession) {
+    public User(String firstName, String lastName, String email, String profession, String username, String password, LoginActivity.UserType userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.profession = profession;
         this.username = username;
         this.password = password;
         this.userType =userType;
         this.rate = 0;
         this.rateCount = 0;
         this.comments = new ArrayList<>();
-        this.profession = profession;
     }
 
     public String getFirstName() {

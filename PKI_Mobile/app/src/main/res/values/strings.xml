@@ -48,7 +48,7 @@
     <string name="request_repair">Request Repair</string>
     <string name="edit_profile">Edit profile</string>
     <string name="profession_colon">Profession :</string>
-    <string name="e_mail">E-mail :</string>
+    <string name="e_mail_colon">E-mail :</string>
     <string name="new_payment">New payment</string>
     <string name="new_request">New request</string>
     <string name="cash">Cash</string>
@@ -69,4 +69,12 @@
     <string name="my_craftsmen">My craftsmen</string>
     <string name="all_craftsmen">All craftsmen</string>
     <string name="selected_user">Selected user</string>
+    <string name="rr_severity">Severity :</string>
+    <string name="severity_low">Low</string>
+    <string name="severity_medium">Medium</string>
+    <string name="severity_high">High</string>
+    <string name="last_name">Last name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="user">User</string>
+    <string name="craftsman">Craftsman</string>
 </resources>

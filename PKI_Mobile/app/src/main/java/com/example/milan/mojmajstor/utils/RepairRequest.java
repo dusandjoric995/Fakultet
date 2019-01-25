@@ -15,8 +15,9 @@ public class RepairRequest implements Serializable {
     private double paid;
     private double price;
     private boolean listenerSet;
+    private Severity severity;
 
-    public RepairRequest(String description, User craftsman, String date, String status, User client, String district, String address, boolean creditCard, double paid, double price) {
+    public RepairRequest(String description, User craftsman, String date, String status, User client, String district, String address, boolean creditCard, double paid, double price, Severity severity) {
         this.description = description;
         this.craftsman = craftsman;
         this.date = date;
@@ -28,6 +29,7 @@ public class RepairRequest implements Serializable {
         this.paid = paid;
         this.price = price;
         this.listenerSet = false;
+        this.severity = severity;
     }
 
     public String getDescription() {
@@ -117,4 +119,35 @@ public class RepairRequest implements Serializable {
     public void setListenerSet(boolean listenerSet) {
         this.listenerSet = listenerSet;
     }
+
+    public Severity getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(Severity severity) {
+        this.severity = severity;
+    }
+
+    public enum Severity {
+        LOW,
+        MEDIUM,
+        HIGH;
+
+        @Override
+        public String toString() {
+            switch (this){
+                case LOW:{
+                    return "Low";
+                }
+                case MEDIUM:{
+                    return "Medium";
+                }
+                case HIGH:{
+                    return "High";
+                }
+            }
+            return null;
+        }
+    }
+
 }

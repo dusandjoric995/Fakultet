@@ -102,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
         ivProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*for (int i = 0; i < navigationView.getMenu().size(); i++) {
+                    navigationView.getMenu().getItem(i).setChecked(false);
+                }*/
                 drawerLayout.closeDrawer(GravityCompat.START);
                 Bundle arguments = new Bundle();
                 arguments.putSerializable(thisActivity.getResources().getString(R.string.selected_user), data.currentUser);

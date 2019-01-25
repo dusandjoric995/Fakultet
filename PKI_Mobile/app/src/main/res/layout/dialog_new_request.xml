@@ -61,18 +61,57 @@
         app:layout_constraintTop_toBottomOf="@+id/etNRDistrict" />
 
     <TextView
-        android:id="@+id/tvNRPayingMethod"
+        android:id="@+id/tvNRSeverity"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:text="@string/paying_method"
+        android:text="@string/rr_severity"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNRAddress" />
 
     <RadioGroup
-        android:id="@+id/rgNR"
+        android:id="@+id/rgNRSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNRSeverity"
+        app:layout_constraintStart_toEndOf="@+id/tvNRSeverity"
+        app:layout_constraintTop_toTopOf="@+id/tvNRSeverity">
+
+        <RadioButton
+            android:id="@+id/rbNRLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/severity_low" />
+
+        <RadioButton
+            android:id="@+id/rbNRMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/severity_medium"/>
+
+        <RadioButton
+            android:id="@+id/rbNRHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/severity_high" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvNRPayingMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/paying_method"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgNRSeverity" />
+
+    <RadioGroup
+        android:id="@+id/rgNRPayingMethod"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginStart="15dp"
@@ -117,6 +156,6 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgNR" />
+        app:layout_constraintTop_toBottomOf="@+id/rgNRPayingMethod" />
 
 </android.support.constraint.ConstraintLayout>

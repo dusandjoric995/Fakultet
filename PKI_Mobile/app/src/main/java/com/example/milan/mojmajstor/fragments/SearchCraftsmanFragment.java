@@ -76,8 +76,6 @@ public class SearchCraftsmanFragment extends Fragment {
             }
         };
 
-
-
         etFirstOrLastName.addTextChangedListener(textWatcher);
         etProfession.addTextChangedListener(textWatcher);
         rbAllWorkers.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -87,6 +85,18 @@ public class SearchCraftsmanFragment extends Fragment {
                 lvAdapter.notifyDataSetChanged();
             }
         });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        etFirstOrLastName.setText("");
+        etProfession.setText("");
+        data.findSelectedCraftsmen(selectedCraftsmen, "", "", null);
+        rbAllWorkers.setChecked(true);
+        lvAdapter.notifyDataSetChanged();
 
     }
 }

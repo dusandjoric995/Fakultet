@@ -139,6 +139,7 @@ public class RepairRequestsExpandableListViewAdapter extends BaseExpandableListA
 
         TextView tvDistrict = convertView.findViewById(R.id.tvRRCDistrictI);
         TextView tvAddress = convertView.findViewById(R.id.tvRRCAddressI);
+        TextView tvSeverity = convertView.findViewById(R.id.tvRRCSeverityI);
         TextView tvPrice = convertView.findViewById(R.id.tvRRCPriceI);
         final TextView tvPaid = convertView.findViewById(R.id.tvRRCPaidI);
         final Button btNewPayment = convertView.findViewById(R.id.btRRCPay);
@@ -172,6 +173,7 @@ public class RepairRequestsExpandableListViewAdapter extends BaseExpandableListA
 
         tvDistrict.setText(repairRequest.getDistrict());
         tvAddress.setText(repairRequest.getAddress());
+        tvSeverity.setText(repairRequest.getSeverity().toString());
         tvPrice.setText(String.format("%.2f", repairRequest.getPrice()) + " RSD");
         if(repairRequest.isCreditCard()){
             tvPaid.setText(String.format("%.2f", repairRequest.getPaid()) + " RSD");

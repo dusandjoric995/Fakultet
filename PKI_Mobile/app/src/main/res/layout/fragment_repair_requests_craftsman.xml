@@ -1,32 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
+
+
+    <TextView
+        android:id="@+id/tvRepairRequests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_gold"
-        android:text="Set filters"
-        android:textColor="@android:color/white"
+        android:layout_marginTop="15dp"
+        android:text="@string/repair_requests"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/tvShowFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/button_primary"
-        android:text="Sort"
-        android:textColor="@android:color/white"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/show_filter"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/elv" />
+
+    <ScrollView
+        android:id="@+id/svFilter"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowFilter">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/description"
+                android:inputType="textCapSentences"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etClient"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/client"
+                android:inputType="textCapSentences"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/etDescription"
+                app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
+            <EditText
+                android:id="@+id/etDistrict"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/district"
+                android:inputType="textCapSentences"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/etClient"
+                app:layout_constraintTop_toBottomOf="@+id/etClient" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/address"
+                android:inputType="textCapSentences"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/etDistrict"
+                app:layout_constraintTop_toBottomOf="@+id/etDistrict" />
+
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/ur_date"
+                android:inputType="date"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/etAddress"
+                app:layout_constraintTop_toBottomOf="@+id/etAddress" />
+
+            <TextView
+                android:id="@+id/tvSeverity"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/rr_severity"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/cbSeverityLow"
+                app:layout_constraintStart_toStartOf="@+id/cbSeverityLow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status_colon"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/cbStatusOnHold"
+                app:layout_constraintStart_toStartOf="@+id/cbStatusOnHold" />
+
+            <CheckBox
+                android:id="@+id/cbSeverityLow"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:text="@string/severity_low"
+                app:layout_constraintBottom_toBottomOf="@+id/cbSeverityMedium"
+                app:layout_constraintEnd_toStartOf="@+id/cbSeverityMedium"
+                app:layout_constraintTop_toTopOf="@+id/cbSeverityMedium" />
+
+            <CheckBox
+                android:id="@+id/cbSeverityMedium"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:text="@string/severity_medium"
+                app:layout_constraintBottom_toBottomOf="@+id/cbSeverityHigh"
+                app:layout_constraintEnd_toStartOf="@+id/cbSeverityHigh"
+                app:layout_constraintTop_toTopOf="@+id/cbSeverityHigh" />
+
+            <CheckBox
+                android:id="@+id/cbSeverityHigh"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/severity_high"
+                app:layout_constraintBottom_toBottomOf="@id/etClient"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etDescription" />
+
+            <CheckBox
+                android:id="@+id/cbStatusOnHold"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="@string/repair_status_on_hold"
+                app:layout_constraintBottom_toBottomOf="@+id/cbStatusOffered"
+                app:layout_constraintEnd_toStartOf="@+id/cbStatusOffered"
+                app:layout_constraintTop_toTopOf="@+id/cbStatusOffered" />
+
+            <CheckBox
+                android:id="@+id/cbStatusOffered"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/repair_status_offered"
+                app:layout_constraintBottom_toBottomOf="@+id/etDistrict"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etDistrict" />
+
+            <CheckBox
+                android:id="@+id/cbStatusApproved"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="@string/repair_status_accepted"
+                app:layout_constraintStart_toStartOf="@+id/cbStatusOnHold"
+                app:layout_constraintTop_toBottomOf="@+id/cbStatusOnHold" />
+
+            <CheckBox
+                android:id="@+id/cbStatusRefused"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="@string/repair_status_refused"
+                app:layout_constraintEnd_toEndOf="@+id/cbStatusOffered"
+                app:layout_constraintTop_toBottomOf="@+id/cbStatusOffered" />
+
+            <CheckBox
+                android:id="@+id/cbStatusPaid"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/repair_status_paid"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cbStatusApproved"
+                app:layout_constraintTop_toBottomOf="@+id/cbStatusApproved" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+    <TableRow
+        android:id="@+id/trHeader"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvHeaderDescription"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingEnd="5dp"
+            android:text="@string/description"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvHeaderDate"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingStart="5dp"
+            android:text="@string/ur_date"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvHeaderSeverity"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/severity"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvHeaderStatus"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/ur_status"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </TableRow>
+
+    <ExpandableListView
+        android:id="@+id/elv"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="55dp"
+        android:divider="@color/colorPrimary"
+        android:dividerHeight="0dp"
+        android:groupIndicator="@null"
+        app:layout_constraintTop_toBottomOf="@id/trHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </ExpandableListView>
+
+    <RelativeLayout
+        android:id="@+id/rlElvBorder"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/table_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/rlFilterBorderTop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/distancer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowFilter" />
+
+    <RelativeLayout
+        android:id="@+id/rlFilterBorderBottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/distancer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowFilter" />
+
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.milan.mojmajstor.dialogs;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,11 +43,11 @@ public class NewRequestDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_new_request);
 
-        btCancel = findViewById(R.id.btNRCancel);
-        btNewRequest = findViewById(R.id.btNRConfirmRequest);
-        etDescription = findViewById(R.id.etNRDescription);
-        etDistrict = findViewById(R.id.etNRDistrict);
-        etAddress = findViewById(R.id.etNRAddress);
+        btCancel = findViewById(R.id.btSFCancel);
+        btNewRequest = findViewById(R.id.btSFConfirm);
+        etDescription = findViewById(R.id.etSFDescription);
+        etDistrict = findViewById(R.id.etSFClient);
+        etAddress = findViewById(R.id.etSFLocation);
         rbCash = findViewById(R.id.rbNRCash);
         rbLow = findViewById(R.id.rbNRLow);
         rg = findViewById(R.id.rgNRSeverity);
@@ -55,15 +56,15 @@ public class NewRequestDialog extends Dialog {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){
-                    case 0:{
+                    case R.id.rbNRLow:{
                         severity = RepairRequest.Severity.LOW;
                         break;
                     }
-                    case 1:{
+                    case R.id.rbNRMedium:{
                         severity = RepairRequest.Severity.MEDIUM;
                         break;
                     }
-                    case 2:{
+                    case R.id.rbNRHigh:{
                         severity = RepairRequest.Severity.HIGH;
                         break;
                     }
@@ -84,7 +85,7 @@ public class NewRequestDialog extends Dialog {
         btNewRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data.repairRequests.add(new RepairRequest(etDescription.getText().toString(), craftsman, "10.10.2018", thisActivity.getResources().getString(R.string.repair_status_on_hold), data.currentUser, etDistrict.getText().toString(), etAddress.getText().toString(), !rbCash.isChecked(), 0, 0, severity));
+                data.repairRequests.add(new RepairRequest(etDescription.getText().toString(), craftsman, "10.10.2018", RepairRequest.Status.ON_HOLD, data.currentUser, etDistrict.getText().toString(), etAddress.getText().toString(), !rbCash.isChecked(), 0, 0, severity));
                 ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.request_sent));
                 dismiss();
             }

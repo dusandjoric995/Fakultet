@@ -11,9 +11,10 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 
+import com.example.milan.mojmajstor.LoginActivity;
 import com.example.milan.mojmajstor.R;
 import com.example.milan.mojmajstor.utils.Data;
-import com.example.milan.mojmajstor.utils.RepairRequestsExpandableListViewAdapter;
+import com.example.milan.mojmajstor.utils.RepairRequestsUserExpandableListViewAdapter;
 import com.example.milan.mojmajstor.utils.RepairRequest;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class RepairRequestsUserFragment extends Fragment {
     private PopupMenu.OnMenuItemClickListener popupMenuListener;
     private Data data;
     private ExpandableListView elvRepairRequests;
-    private RepairRequestsExpandableListViewAdapter elvRepairRequestsAdapter;
+    private RepairRequestsUserExpandableListViewAdapter elvRepairRequestsAdapter;
     ArrayList<RelativeLayout> repairRequestsLayouts;
     ArrayList<RelativeLayout> repairRequestsDetailLayouts;
     ArrayList<RepairRequest> repairRequests;
@@ -43,10 +44,11 @@ public class RepairRequestsUserFragment extends Fragment {
 
         repairRequestsLayouts = new ArrayList<>();
         repairRequestsDetailLayouts = new ArrayList<>();
-        repairRequests = data.getCurrentUserRepairRequests();
+        repairRequests = new ArrayList<>();
+        data.getCurrentUserRepairRequests(repairRequests, LoginActivity.UserType.USER);
         checkedRequests = new ArrayList<>();
 
-        elvRepairRequestsAdapter = new RepairRequestsExpandableListViewAdapter(getActivity(), elvRepairRequests, repairRequests, checkedRequests, btAdditionalOptions);
+        elvRepairRequestsAdapter = new RepairRequestsUserExpandableListViewAdapter(getActivity(), elvRepairRequests, repairRequests, checkedRequests, btAdditionalOptions);
         elvRepairRequests.setAdapter(elvRepairRequestsAdapter);
         btAdditionalOptions.setVisibility(View.INVISIBLE);
 

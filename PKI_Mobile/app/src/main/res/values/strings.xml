@@ -37,10 +37,10 @@
     <string name="thanks_for_rating">Thanks for rating!</string>
     <string name="payment_successful">Payment successful!</string>
     <string name="comment_added">Comment added!</string>
-    <string name="rr_price">Price :</string>
+    <string name="price_colon">Price :</string>
     <string name="repair_status_paid">Placen</string>
     <string name="repair_status_refused">Odbijen</string>
-    <string name="repair_status_approved">Prihvacen</string>
+    <string name="repair_status_accepted">Prihvacen</string>
     <string name="first_name">First name</string>
     <string name="register_button">Register</string>
     <string name="back">Back</string>
@@ -71,10 +71,40 @@
     <string name="selected_user">Selected user</string>
     <string name="rr_severity">Severity :</string>
     <string name="severity_low">Low</string>
-    <string name="severity_medium">Medium</string>
+    <string name="severity_medium">Med</string>
     <string name="severity_high">High</string>
     <string name="last_name">Last name</string>
     <string name="e_mail">E-mail</string>
     <string name="user">User</string>
     <string name="craftsman">Craftsman</string>
+    <string name="set_filters">Set filters</string>
+    <string name="sort">Sort</string>
+    <string name="client">Client</string>
+    <string name="location">Location</string>
+    <string name="severity">Severity</string>
+    <string name="refuse">Refuse</string>
+    <string name="accept">Accept</string>
+    <string name="client_colon">Client :</string>
+    <string name="location_colon">Location :</string>
+    <string name="district_colon">District :</string>
+    <string name="address_colon">Address :</string>
+    <string name="district">District</string>
+    <string name="sort_by">Sort by :</string>
+    <string name="repair_status_offered">Ponudjen</string>
+    <string name="status_colon">Status :</string>
+    <string name="show_filter">Show filter</string>
+    <string name="hide_filter">Hide filter</string>
+    <string name="repair_request_refused">Repair request refused</string>
+    <string name="price">Price</string>
+    <string name="repair_request_accepted">Repair request accepted</string>
+
+    <string-array name="sort">
+        <item>Description</item>
+        <item>Client</item>
+        <item>District</item>
+        <item>Address</item>
+        <item>Severity</item>
+        <item>Status</item>
+        <item>Date</item>
+    </string-array>
 </resources>

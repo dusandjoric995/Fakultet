@@ -1,8 +1,11 @@
 package com.example.milan.mojmajstor.utils;
 
+import android.app.Activity;
+
 import com.example.milan.mojmajstor.LoginActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Data {
 
@@ -10,6 +13,15 @@ public class Data {
     public ArrayList<RepairRequest> repairRequests;
     public User currentUser;
     private static Data instance = new Data();
+    private static Activity currentActivity;
+
+    public static Activity getCurrentActivity() {
+        return currentActivity;
+    }
+
+    public static void setCurrentActivity(Activity currentActivity) {
+        Data.currentActivity = currentActivity;
+    }
 
     private Data(){
         initialize();
@@ -26,18 +38,18 @@ public class Data {
         users.add(new User("Jovana", "Cakic", "jovanacakic995@gmail.com", "Diplomirani inzenjer energetike", "jovana", "jovana", LoginActivity.UserType.USER));
         users.add(new User("Jelena", "Petrovic", "jelenapetrovic995@gmail.com", "Stolar", "jelena", "jelena", LoginActivity.UserType.CRAFTSMAN));
 
-        repairRequests.add(new RepairRequest("Popravka motora", containsUsername("milan"), "10.10.2018.", "Prihvacen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.MEDIUM));
-        repairRequests.add(new RepairRequest("Popravka vrata", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.MEDIUM));
-        repairRequests.add(new RepairRequest("Popravka kreveta", containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.MEDIUM));
-        repairRequests.add(new RepairRequest("Popravka zida", containsUsername("milan"), "10.10.2018.", "Odbijen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.LOW));
-        repairRequests.add(new RepairRequest("Popravka terase", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.LOW));
-        repairRequests.add(new RepairRequest("Popravka kompjutera",containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.LOW));
-        repairRequests.add(new RepairRequest("Popravka baterije", containsUsername("milan"), "10.10.2018.", "Prihvacen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
-        repairRequests.add(new RepairRequest("Popravka enterijera", containsUsername("sladjana"), "10.10.2018.", "Prihvacen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
-        repairRequests.add(new RepairRequest("Popravka stolice", containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
-        repairRequests.add(new RepairRequest("Popravka odece", containsUsername("milan"), "10.10.2018.", "Odbijen", containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.MEDIUM));
-        repairRequests.add(new RepairRequest("Popravka obuce", containsUsername("sladjana"), "10.10.2018.", "Odbijen", containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.LOW));
-        repairRequests.add(new RepairRequest("Popravka skutera", containsUsername("jelena"), "10.10.2018.", "Prihvacen", containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
+        repairRequests.add(new RepairRequest("Popravka motora", containsUsername("milan"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.MEDIUM));
+        repairRequests.add(new RepairRequest("Popravka vrata", containsUsername("sladjana"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.MEDIUM));
+        repairRequests.add(new RepairRequest("Popravka kreveta", containsUsername("jelena"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.MEDIUM));
+        repairRequests.add(new RepairRequest("Popravka zida", containsUsername("milan"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.LOW));
+        repairRequests.add(new RepairRequest("Popravka terase", containsUsername("sladjana"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.LOW));
+        repairRequests.add(new RepairRequest("Popravka kompjutera",containsUsername("jelena"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", true, 0, 10000, RepairRequest.Severity.LOW));
+        repairRequests.add(new RepairRequest("Popravka baterije", containsUsername("milan"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
+        repairRequests.add(new RepairRequest("Popravka enterijera", containsUsername("sladjana"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
+        repairRequests.add(new RepairRequest("Popravka stolice", containsUsername("jelena"), "10.10.2018.", RepairRequest.Status.ACCEPTED, containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
+        repairRequests.add(new RepairRequest("Popravka odece", containsUsername("milan"), "10.10.2018.", RepairRequest.Status.REFUSED, containsUsername("dusan"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.MEDIUM));
+        repairRequests.add(new RepairRequest("Popravka obuce", containsUsername("sladjana"), "10.10.2018.", RepairRequest.Status.REFUSED, containsUsername("zoran"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.LOW));
+        repairRequests.add(new RepairRequest("Popravka skutera", containsUsername("jelena"), "10.10.2018.", RepairRequest.Status.REFUSED, containsUsername("jovana"), "Novi Beograd", "Bul. Zorana Djindjica 111/1/1", false, 0, 10000, RepairRequest.Severity.HIGH));
     }
 
     public static Data getInstance(){
@@ -59,14 +71,26 @@ public class Data {
         return user.getPassword().equals(password);
     }
 
-    public ArrayList<RepairRequest> getCurrentUserRepairRequests() {
-        ArrayList<RepairRequest> currentUserRepairRequests = new ArrayList<>();
-        for(RepairRequest repairRequest : repairRequests){
-            if(repairRequest.getClient() == currentUser){
-                currentUserRepairRequests.add(repairRequest);
+    public void getCurrentUserRepairRequests(ArrayList<RepairRequest> currentUserRepairRequests, LoginActivity.UserType userType) {
+        currentUserRepairRequests.clear();
+        switch (userType){
+            case USER:{
+                for(RepairRequest repairRequest : repairRequests){
+                    if(repairRequest.getClient() == currentUser){
+                        currentUserRepairRequests.add(repairRequest);
+                    }
+                }
+                break;
+            }
+            case CRAFTSMAN:{
+                for(RepairRequest repairRequest : repairRequests){
+                    if(repairRequest.getCraftsman() == currentUser){
+                        currentUserRepairRequests.add(repairRequest);
+                    }
+                }
+                break;
             }
         }
-        return currentUserRepairRequests;
     }
 
     public void removeRepairRequest(RepairRequest repairRequest) {
@@ -98,5 +122,113 @@ public class Data {
             }
         }
         return false;
+    }
+
+    public void sortRepairRequests(ArrayList<RepairRequest> repairRequests, int sortingOption) {
+        if (repairRequests.size() > 0) {
+            switch (sortingOption) {
+                case 0: { // Description
+                    if (repairRequests.get(0).getDescription().toUpperCase().compareTo(repairRequests.get(repairRequests.size() - 1).getDescription().toUpperCase()) >= 0) {
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getDescription().toUpperCase().compareTo(repairRequests.get(j).getDescription().toUpperCase()) > 0) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getDescription().toUpperCase().compareTo(repairRequests.get(j).getDescription().toUpperCase()) < 0) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 1: { // Date
+
+                    break;
+                }
+                case 2: { // Severity
+                    if (repairRequests.get(0).getSeverity().ordinal() >= repairRequests.get(repairRequests.size() - 1).getSeverity().ordinal()) {
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getSeverity().ordinal() > repairRequests.get(j).getSeverity().ordinal()) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getSeverity().ordinal() < repairRequests.get(j).getSeverity().ordinal()) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 3: { // Status
+                    if (repairRequests.get(0).getStatus().ordinal() >= repairRequests.get(repairRequests.size() - 1).getStatus().ordinal()) {
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getStatus().ordinal() > repairRequests.get(j).getStatus().ordinal()) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getStatus().ordinal() < repairRequests.get(j).getStatus().ordinal()) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    private boolean dateBeforeDate(String date1, String date2) {
+        Date date1d = new Date(date1);
+        Date date2d = new Date(date2);
+        if(date1d.before(date2d)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    private boolean dateAfterDate(String date1, String date2) {
+        Date date1d = new Date(date1);
+        Date date2d = new Date(date2);
+        if(date1d.after(date2d)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

@@ -1,5 +1,9 @@
 package com.example.milan.mojmajstor.utils;
 
+import android.content.res.Resources;
+
+import com.example.milan.mojmajstor.R;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,7 +11,7 @@ public class RepairRequest implements Serializable {
     private String description;
     private User craftsman;
     private String date;
-    private String status;
+    private Status status;
     private User client;
     private String district;
     private String address;
@@ -17,7 +21,7 @@ public class RepairRequest implements Serializable {
     private boolean listenerSet;
     private Severity severity;
 
-    public RepairRequest(String description, User craftsman, String date, String status, User client, String district, String address, boolean creditCard, double paid, double price, Severity severity) {
+    public RepairRequest(String description, User craftsman, String date, Status status, User client, String district, String address, boolean creditCard, double paid, double price, Severity severity) {
         this.description = description;
         this.craftsman = craftsman;
         this.date = date;
@@ -56,11 +60,11 @@ public class RepairRequest implements Serializable {
         this.date = date;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -137,13 +141,43 @@ public class RepairRequest implements Serializable {
         public String toString() {
             switch (this){
                 case LOW:{
-                    return "Low";
+                    return Data.getCurrentActivity().getResources().getString(R.string.severity_low);
                 }
                 case MEDIUM:{
-                    return "Medium";
+                    return Data.getCurrentActivity().getResources().getString(R.string.severity_medium);
                 }
                 case HIGH:{
-                    return "High";
+                    return Data.getCurrentActivity().getResources().getString(R.string.severity_high);
+                }
+            }
+            return null;
+        }
+    }
+
+    public enum Status {
+        ON_HOLD,
+        OFFERED,
+        ACCEPTED,
+        PAID,
+        REFUSED;
+
+        @Override
+        public String toString() {
+            switch (this){
+                case ON_HOLD:{
+                    return Data.getCurrentActivity().getResources().getString(R.string.repair_status_on_hold);
+                }
+                case OFFERED:{
+                    return Data.getCurrentActivity().getResources().getString(R.string.repair_status_offered);
+                }
+                case ACCEPTED:{
+                    return Data.getCurrentActivity().getResources().getString(R.string.repair_status_accepted);
+                }
+                case PAID:{
+                    return Data.getCurrentActivity().getResources().getString(R.string.repair_status_paid);
+                }
+                case REFUSED:{
+                    return Data.getCurrentActivity().getResources().getString(R.string.repair_status_refused);
                 }
             }
             return null;

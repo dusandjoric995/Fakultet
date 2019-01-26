@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.R;
-import com.example.milan.mojmajstor.utils.RepairRequestsExpandableListViewAdapter;
+import com.example.milan.mojmajstor.utils.RepairRequestsUserExpandableListViewAdapter;
 import com.example.milan.mojmajstor.utils.ToastWriter;
 import com.example.milan.mojmajstor.utils.RepairRequest;
 
@@ -25,9 +25,9 @@ public class PaymentDialog extends Dialog {
     private TextView tvPaid;
     private TextView tvStatus;
     private Activity thisActivity;
-    private RepairRequestsExpandableListViewAdapter adapter;
+    private RepairRequestsUserExpandableListViewAdapter adapter;
 
-    public PaymentDialog(Activity activity, RepairRequest repairRequest, TextView tvPaid, RepairRequestsExpandableListViewAdapter adapter, Button btNewPayment){
+    public PaymentDialog(Activity activity, RepairRequest repairRequest, TextView tvPaid, RepairRequestsUserExpandableListViewAdapter adapter, Button btNewPayment){
         super(activity);
         thisActivity = activity;
         this.repairRequest = repairRequest;
@@ -82,7 +82,7 @@ public class PaymentDialog extends Dialog {
                 double newPayment = Double.parseDouble(etAmount.getText().toString());
                 if(repairRequest.getPaid() + newPayment >= repairRequest.getPrice()){
                     repairRequest.setPaid(repairRequest.getPrice());
-                    repairRequest.setStatus(thisActivity.getResources().getString(R.string.repair_status_paid));
+                    repairRequest.setStatus(RepairRequest.Status.PAID);
                     btNewPaymenn.setEnabled(false);
                     adapter.notifyDataSetChanged();
                 }

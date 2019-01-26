@@ -84,7 +84,7 @@ public class RepairRequestFragmentLegacy extends Fragment {
         tvAddress.setText(repairRequest.getAddress());
         tvDescription.setText(repairRequest.getDescription());
         tvPrice.setText(String.format("%.2f", repairRequest.getPrice()) + " RSD");
-        tvStatus.setText(repairRequest.getStatus());
+        tvStatus.setText(repairRequest.getStatus().toString());
         if(repairRequest.isCreditCard()){
             tvPaid.setText(String.format("%.2f", repairRequest.getPaid()) + " RSD");
             btNewPayment.setVisibility(View.VISIBLE);
@@ -96,7 +96,7 @@ public class RepairRequestFragmentLegacy extends Fragment {
         if(repairRequest.getPaid() == repairRequest.getPrice()){
             btNewPayment.setEnabled(false);
         }
-        if(repairRequest.getStatus().equals(getActivity().getResources().getString(R.string.repair_status_refused))){
+        if(repairRequest.getStatus().toString().equals(getActivity().getResources().getString(R.string.repair_status_refused))){
             btNewPayment.setEnabled(false);
             btRateCraftsman.setEnabled(false);
             btCommentCraftsman.setEnabled(false);

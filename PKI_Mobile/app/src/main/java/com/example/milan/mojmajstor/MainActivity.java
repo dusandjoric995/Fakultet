@@ -11,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         MainFragmentController.initialize(getSupportFragmentManager());
         thisActivity = this;
         data = Data.getInstance();
+        Data.setCurrentActivity(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,7 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.menu_item_drawer_repair_requests:{
                         MainFragmentController.clearBackStack();
-                        toggle.setNextAction(MainFragmentController.userRequestFragment);
+                        switch (data.currentUser.getUserType()){
+                            case USER:{
+                                toggle.setNextAction(MainFragmentController.repairRequestsUserFragment);
+                                break;
+                            }
+                            case CRAFTSMAN:{
+                                toggle.setNextAction(MainFragmentController.repairRequestsCraftsmanFragment);
+                                break;
+                            }
+                        }
+
                         break;
                     }
                     case R.id.menu_item_drawer_search_craftsman:{
@@ -75,8 +85,10 @@ public class MainActivity extends AppCompatActivity {
         navigationDrawerMenu.clear();
         switch (data.currentUser.getUserType()){
             case CRAFTSMAN:{
+                navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_repair_requests, Menu.NONE, getString(R.string.repair_requests)).setIcon(R.drawable.ic_repair_requests).setCheckable(true);
+                navigationView.setCheckedItem(R.id.menu_item_drawer_repair_requests);
                 MainFragmentController.clearBackStack();
-                MainFragmentController.setMainFragment(MainFragmentController.craftsmanRequestFragment, null);
+                MainFragmentController.setMainFragment(MainFragmentController.repairRequestsCraftsmanFragment, null);
                 break;
             }
             case USER:{
@@ -84,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 navigationDrawerMenu.add(R.id.menu_item_drawer_group_top, R.id.menu_item_drawer_search_craftsman, Menu.NONE, getString(R.string.search_craftsman)).setIcon(R.drawable.ic_search_craftsman).setCheckable(true);
                 navigationView.setCheckedItem(R.id.menu_item_drawer_repair_requests);
                 MainFragmentController.clearBackStack();
-                MainFragmentController.setMainFragment(MainFragmentController.userRequestFragment, null);
+                MainFragmentController.setMainFragment(MainFragmentController.repairRequestsUserFragment, null);
                 break;
             }
             case GUEST:{

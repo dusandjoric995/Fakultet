@@ -10,16 +10,16 @@ public class MainFragmentController {
 
     private static FragmentManager fragmentManager;
     private static BackButtonFragment backButtonFragment;
-    public static RepairRequestsUserFragment userRequestFragment;
-    public static CraftsmanRequestFragment craftsmanRequestFragment;
+    public static RepairRequestsUserFragment repairRequestsUserFragment;
+    public static RepairRequestsCraftsmanFragment repairRequestsCraftsmanFragment;
     public static RepairRequestFragmentLegacy repairRequestFragment;
     public static ProfilePictureFragment profilePictureFragment;
     public static SearchCraftsmanFragment searchCraftsmanFragment;
 
     public static void initialize(FragmentManager fm){
         fragmentManager = fm;
-        userRequestFragment = new RepairRequestsUserFragment();
-        craftsmanRequestFragment = new CraftsmanRequestFragment();
+        repairRequestsUserFragment = new RepairRequestsUserFragment();
+        repairRequestsCraftsmanFragment = new RepairRequestsCraftsmanFragment();
         repairRequestFragment = new RepairRequestFragmentLegacy();
         backButtonFragment = new BackButtonFragment();
         profilePictureFragment = new ProfilePictureFragment();

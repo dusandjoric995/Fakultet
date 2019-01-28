@@ -8,11 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.LoginActivity;
@@ -30,11 +30,12 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
     private RepairRequestsCraftsmanExpandableListViewAdapter elvAdapter;
     private ArrayList<RepairRequest> repairRequests;
     private Data data;
-    private EditText etDescription, etClient, etDisctrict, etAddress;
     private ScrollView svFilter;
     private RelativeLayout rlFilterBorderTop, rlFilterBorderBottom;
-    private TextView tvShowFilter, tvDescription, tvDate, tvSeverity, tvStatus;
+    private TextView tvShowFilter, tvHeaderDescription, tvHeaderDate, tvHeaderSeverity, tvHeaderStatus;
     private boolean filterVisible;
+    private EditText etFilterDescription, etFilterClient, etFilterDistrict, etFilterAddress, etFilterDate;
+    private CheckBox cbSeverityLow, cbSeverityMedium, cbSeverityHigh, cbStatusOnHold, cbStatusOffered, cbStatusAccepted, cbStatusPaid, cbStatusRefused;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -53,14 +54,27 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
         rlFilterBorderTop = view.findViewById(R.id.rlFilterBorderTop);
         rlFilterBorderBottom = view.findViewById(R.id.rlFilterBorderBottom);
         tvShowFilter = view.findViewById(R.id.tvShowFilter);
-        tvDescription = view.findViewById(R.id.tvHeaderDescription);
-        tvDate = view.findViewById(R.id.tvHeaderDate);
-        tvSeverity = view.findViewById(R.id.tvHeaderSeverity);
-        tvStatus = view.findViewById(R.id.tvHeaderStatus);
+        tvHeaderDescription = view.findViewById(R.id.tvHeaderDescription);
+        tvHeaderDate = view.findViewById(R.id.tvHeaderDate);
+        tvHeaderSeverity = view.findViewById(R.id.tvHeaderSeverity);
+        tvHeaderStatus = view.findViewById(R.id.tvHeaderStatus);
+        etFilterDescription = view.findViewById(R.id.etDescription);
+        etFilterClient = view.findViewById(R.id.etClient);
+        etFilterDistrict = view.findViewById(R.id.etDistrict);
+        etFilterAddress = view.findViewById(R.id.etAddress);
+        etFilterDate = view.findViewById(R.id.etDate);
+        cbSeverityLow = view.findViewById(R.id.cbSeverityLow);
+        cbSeverityMedium = view.findViewById(R.id.cbSeverityMedium);
+        cbSeverityHigh = view.findViewById(R.id.cbSeverityHigh);
+        cbStatusOnHold = view.findViewById(R.id.cbStatusOnHold);
+        cbStatusOffered = view.findViewById(R.id.cbStatusOffered);
+        cbStatusAccepted = view.findViewById(R.id.cbStatusApproved);
+        cbStatusPaid = view.findViewById(R.id.cbStatusPaid);
+        cbStatusRefused = view.findViewById(R.id.cbStatusRefused);
 
-        tvDescription.setOnClickListener(new HeaderOnClickListener(0));
-        tvSeverity.setOnClickListener(new HeaderOnClickListener(2));
-        tvStatus.setOnClickListener(new HeaderOnClickListener(3));
+        tvHeaderDescription.setOnClickListener(new HeaderOnClickListener(0));
+        tvHeaderSeverity.setOnClickListener(new HeaderOnClickListener(2));
+        tvHeaderStatus.setOnClickListener(new HeaderOnClickListener(3));
 
         filterVisible = false;
         svFilter.setVisibility(View.GONE);

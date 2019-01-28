@@ -79,6 +79,7 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
         tvDate.setText(repairRequest.getDate());
         tvSeverity.setText(repairRequest.getSeverity().toString());
         tvStatus.setText(repairRequest.getStatus().toString());
+        tvStatus.setTextColor(repairRequest.getStatusColor());
 
         if(groupPosition % 2 == 0){
             convertView.setBackgroundResource(R.drawable.table_row_even);

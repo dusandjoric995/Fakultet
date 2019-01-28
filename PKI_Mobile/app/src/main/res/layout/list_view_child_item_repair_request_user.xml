@@ -1,49 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-
     <TableLayout
-        android:id="@+id/tlRRC"
+        android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-            android:paddingVertical="4dp">
+        <TableRow android:paddingVertical="4dp">
 
             <TextView
-                android:id="@+id/tvRRCDistrict"
+                android:id="@+id/tvDistrict"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="26dp"
                 android:text="@string/rr_district"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvRRCDistrictI"
+                android:id="@+id/tvDistrictI"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="14sp"
-                android:paddingStart="20dp"/>
+                android:paddingStart="20dp"
+                android:textSize="14sp" />
         </TableRow>
 
-        <TableRow
-            android:paddingVertical="4dp">
+        <TableRow android:paddingVertical="4dp">
 
             <TextView
-                android:id="@+id/tvRRCAddress"
+                android:id="@+id/tvAddress"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -52,19 +49,18 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvRRCAddressI"
+                android:id="@+id/tvAddressI"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="14sp"
-                android:paddingStart="20dp"/>
+                android:paddingStart="20dp"
+                android:textSize="14sp" />
         </TableRow>
 
-        <TableRow
-            android:paddingVertical="4dp">
+        <TableRow android:paddingVertical="4dp">
 
             <TextView
-                android:id="@+id/tvRRCSeverity"
+                android:id="@+id/tvSeverity"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -73,110 +69,175 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvRRCSeverityI"
+                android:id="@+id/tvSeverityI"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="14sp"
-                android:paddingStart="20dp"/>
+                android:paddingStart="20dp"
+                android:textSize="14sp" />
         </TableRow>
 
-        <TableRow
-            android:paddingVertical="4dp">
+        <TableRow android:paddingVertical="4dp">
 
             <TextView
-                android:id="@+id/tvRRCPrice"
+                android:id="@+id/tvPrice"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="26dp"
                 android:text="@string/price_colon"
                 android:textSize="14sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvRRCPriceI"
+                android:id="@+id/tvPriceI"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:paddingStart="20dp"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:paddingStart="20dp" />
+                android:textStyle="bold" />
         </TableRow>
 
     </TableLayout>
 
 
-    <LinearLayout
-        android:id="@+id/rlRRCPayment"
-        android:layout_width="210dp"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clPayment"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@id/rlRRCDistance1"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:weightSum="10">
+        android:weightSum="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlDistancerPayment">
 
         <TextView
-            android:id="@+id/tvRRCPaid"
+            android:id="@+id/tvPaid"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/rr_paid"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvRRCPaidI"
+            android:id="@+id/tvPaidI"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="4"
             android:paddingEnd="12dp"
-            android:layout_gravity="center_vertical"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btPay"
+            app:layout_constraintStart_toEndOf="@+id/tvPaid"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPayingWithCash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/paying_with_cash"
+
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btRRCPay"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/btPay"
+            android:layout_width="125dp"
+            android:layout_height="47dp"
             android:background="@drawable/button_accent"
+            android:drawableEnd="@drawable/ic_money"
+            android:paddingStart="10dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="6dp"
             android:text="@string/rr_pay"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:drawableEnd="@drawable/ic_money"
-            android:paddingEnd="4dp"
-            android:paddingStart="10dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlRRCRateAndComment"
-        android:layout_width="210dp"
-        android:layout_height="62dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@id/rlRRCDistance2"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clOffer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp">
+        app:layout_constraintTop_toBottomOf="@id/rlDistancerOffer">
 
         <Button
-            android:id="@+id/btRRCRateCraftsman"
+            android:id="@+id/btRefuse"
+            android:layout_width="100dp"
+            android:layout_height="47dp"
+            android:background="@drawable/button_accent"
+            android:text="@string/refuse"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btAccept"
+            android:layout_width="100dp"
+            android:layout_height="47dp"
+            android:background="@drawable/button_blue"
+            android:text="@string/accept"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlRateAndComment"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/rlDistancerRateAndComment">
+
+        <Button
+            android:id="@+id/btRateCraftsman"
             android:layout_width="130dp"
             android:layout_height="47dp"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
             android:background="@drawable/button_gold"
             android:drawableRight="@drawable/ic_rate_star_white"
             android:paddingStart="8dp"
@@ -186,9 +247,10 @@
             android:textStyle="bold"/>
 
         <Button
-            android:id="@+id/btRRCCommentCraftsman"
+            android:id="@+id/btCommentCraftsman"
             android:layout_width="130dp"
             android:layout_height="47dp"
+            android:layout_marginEnd="20dp"
             android:layout_alignParentEnd="true"
             android:background="@drawable/button_primary"
             android:drawableRight="@drawable/ic_comment"
@@ -201,40 +263,52 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rlRRCDistance1"
+        android:id="@+id/rlDistancerPayment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignBottom="@id/tlRRC"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="-10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/distancer">
+        android:background="@drawable/distancer"
+        app:layout_constraintTop_toBottomOf="@+id/tl">
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rlRRCDistance2"
+        android:id="@+id/rlDistancerOffer"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignBottom="@id/rlRRCPayment"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="-10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/distancer">
+        android:background="@drawable/distancer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clPayment">
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rlRRCDistanceFooter"
+        android:id="@+id/rlDistancerRateAndComment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/colorPrimary">
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/distancer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clOffer">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlDistancerFooter"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/rlRateAndComment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
     </RelativeLayout>
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

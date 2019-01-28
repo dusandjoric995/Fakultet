@@ -35,6 +35,8 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
 
+        Data.initiate();
+
         etUsername = view.findViewById(R.id.etRUsername);
         etPassword = view.findViewById(R.id.etRPassword);
         btLogin = view.findViewById(R.id.btLogin);

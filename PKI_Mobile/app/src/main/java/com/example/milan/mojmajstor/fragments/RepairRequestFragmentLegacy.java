@@ -41,13 +41,13 @@ public class RepairRequestFragmentLegacy extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         MainFragmentController.setBackButton();
 
-        tvDistrict = thisView.findViewById(R.id.tvRRCDistrictI);
-        tvAddress = thisView.findViewById(R.id.tvRRCAddressI);
-        tvPrice = thisView.findViewById(R.id.tvRRCPriceI);
-        tvPaid = thisView.findViewById(R.id.tvRRCPaidI);
-        btNewPayment = thisView.findViewById(R.id.btRRCPay);
-        btRateCraftsman = thisView.findViewById(R.id.btRRCRateCraftsman);
-        btCommentCraftsman = thisView.findViewById(R.id.btRRCCommentCraftsman);
+        tvDistrict = thisView.findViewById(R.id.tvDistrictI);
+        tvAddress = thisView.findViewById(R.id.tvAddressI);
+        tvPrice = thisView.findViewById(R.id.tvPriceI);
+        tvPaid = thisView.findViewById(R.id.tvPaidI);
+        btNewPayment = thisView.findViewById(R.id.btPay);
+        btRateCraftsman = thisView.findViewById(R.id.btRateCraftsman);
+        btCommentCraftsman = thisView.findViewById(R.id.btCommentCraftsman);
         repairRequest = (RepairRequest) getArguments().getSerializable("RepairRequest");
 
         btNewPayment.setOnClickListener(new View.OnClickListener() {

@@ -2,7 +2,7 @@ package com.example.milan.mojmajstor.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -96,6 +97,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
         tvCraftsman.setText(repairRequest.getCraftsman().getFirstAndLastName());
         tvDate.setText(repairRequest.getDate());
         tvStatus.setText(repairRequest.getStatus().toString());
+        tvStatus.setTextColor(repairRequest.getStatusColor());
 
         cbSelected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -137,14 +139,24 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
             convertView = inflater.inflate(R.layout.list_view_child_item_repair_request_user, null);
         }
 
-        TextView tvDistrict = convertView.findViewById(R.id.tvRRCDistrictI);
-        TextView tvAddress = convertView.findViewById(R.id.tvRRCAddressI);
-        TextView tvSeverity = convertView.findViewById(R.id.tvRRCSeverityI);
-        TextView tvPrice = convertView.findViewById(R.id.tvRRCPriceI);
-        final TextView tvPaid = convertView.findViewById(R.id.tvRRCPaidI);
-        final Button btNewPayment = convertView.findViewById(R.id.btRRCPay);
-        Button btRateCraftsman = convertView.findViewById(R.id.btRRCRateCraftsman);
-        Button btCommentCraftsman = convertView.findViewById(R.id.btRRCCommentCraftsman);
+        ConstraintLayout clPayment = convertView.findViewById(R.id.clPayment);
+        ConstraintLayout clOffer = convertView.findViewById(R.id.clOffer);
+        RelativeLayout rlRateAndComment = convertView.findViewById(R.id.rlRateAndComment);
+        RelativeLayout rlDistancerPayment = convertView.findViewById(R.id.rlDistancerPayment);
+        RelativeLayout rlDistancerOffer = convertView.findViewById(R.id.rlDistancerOffer);
+        RelativeLayout rlDistancerRateAndComment = convertView.findViewById(R.id.rlDistancerRateAndComment);
+        TextView tvDistrict = convertView.findViewById(R.id.tvDistrictI);
+        TextView tvAddress = convertView.findViewById(R.id.tvAddressI);
+        TextView tvSeverity = convertView.findViewById(R.id.tvSeverityI);
+        TextView tvPrice = convertView.findViewById(R.id.tvPriceI);
+        TextView tvPayingWithCash = convertView.findViewById(R.id.tvPayingWithCash);
+        final TextView tvPaid = convertView.findViewById(R.id.tvPaid);
+        final TextView tvPaidI = convertView.findViewById(R.id.tvPaidI);
+        final Button btNewPayment = convertView.findViewById(R.id.btPay);
+        Button btRateCraftsman = convertView.findViewById(R.id.btRateCraftsman);
+        Button btCommentCraftsman = convertView.findViewById(R.id.btCommentCraftsman);
+        Button btRefuse = convertView.findViewById(R.id.btRefuse);
+        Button btAccept = convertView.findViewById(R.id.btAccept);
 
         btNewPayment.setEnabled(true);
         btRateCraftsman.setEnabled(true);
@@ -153,7 +165,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
         btNewPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PaymentDialog(thisActivity, repairRequest, tvPaid, thisAdapter, btNewPayment).show();
+                new PaymentDialog(thisActivity, repairRequest, tvPaidI, thisAdapter, btNewPayment).show();
             }
         });
 
@@ -171,17 +183,86 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
             }
         });
 
+        btRefuse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repairRequest.setStatus(RepairRequest.Status.REFUSED);
+                notifyDataSetChanged();
+            }
+        });
+
+        btAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repairRequest.setStatus(RepairRequest.Status.ACCEPTED);
+                notifyDataSetChanged();
+            }
+        });
+
         tvDistrict.setText(repairRequest.getDistrict());
         tvAddress.setText(repairRequest.getAddress());
         tvSeverity.setText(repairRequest.getSeverity().toString());
         tvPrice.setText(String.format("%.2f", repairRequest.getPrice()) + " RSD");
         if(repairRequest.isCreditCard()){
-            tvPaid.setText(String.format("%.2f", repairRequest.getPaid()) + " RSD");
+            tvPaidI.setText(String.format("%.2f", repairRequest.getPaid()) + " RSD");
             btNewPayment.setVisibility(View.VISIBLE);
+            tvPaid.setVisibility(View.VISIBLE);
+            tvPaidI.setVisibility(View.VISIBLE);
+            tvPayingWithCash.setVisibility(View.GONE);
         }
         else{
-            tvPaid.setText(thisActivity.getResources().getString(R.string.paying_with_cash));
+            tvPayingWithCash.setVisibility(View.VISIBLE);
             btNewPayment.setVisibility(View.GONE);
+            tvPaid.setVisibility(View.GONE);
+            tvPaidI.setVisibility(View.GONE);
+        }
+
+        switch (repairRequest.getStatus()){
+            case ON_HOLD:{
+                clPayment.setVisibility(View.GONE);
+                rlDistancerPayment.setVisibility(View.GONE);
+                clOffer.setVisibility(View.GONE);
+                rlDistancerOffer.setVisibility(View.GONE);
+                rlRateAndComment.setVisibility(View.GONE);
+                rlDistancerRateAndComment.setVisibility(View.GONE);
+                break;
+            }
+            case OFFERED:{
+                clPayment.setVisibility(View.GONE);
+                rlDistancerPayment.setVisibility(View.GONE);
+                clOffer.setVisibility(View.VISIBLE);
+                rlDistancerOffer.setVisibility(View.VISIBLE);
+                rlRateAndComment.setVisibility(View.GONE);
+                rlDistancerRateAndComment.setVisibility(View.GONE);
+                break;
+            }
+            case ACCEPTED:{
+                clPayment.setVisibility(View.VISIBLE);
+                rlDistancerPayment.setVisibility(View.VISIBLE);
+                clOffer.setVisibility(View.GONE);
+                rlDistancerOffer.setVisibility(View.GONE);
+                rlRateAndComment.setVisibility(View.GONE);
+                rlDistancerRateAndComment.setVisibility(View.GONE);
+                break;
+            }
+            case PAID:{
+                clPayment.setVisibility(View.GONE);
+                rlDistancerPayment.setVisibility(View.GONE);
+                clOffer.setVisibility(View.GONE);
+                rlDistancerOffer.setVisibility(View.GONE);
+                rlRateAndComment.setVisibility(View.VISIBLE);
+                rlDistancerRateAndComment.setVisibility(View.VISIBLE);
+                break;
+            }
+            case REFUSED:{
+                clPayment.setVisibility(View.GONE);
+                rlDistancerPayment.setVisibility(View.GONE);
+                clOffer.setVisibility(View.GONE);
+                rlDistancerOffer.setVisibility(View.GONE);
+                rlRateAndComment.setVisibility(View.GONE);
+                rlDistancerRateAndComment.setVisibility(View.GONE);
+                break;
+            }
         }
         if(repairRequest.getPaid() == repairRequest.getPrice()){
             btNewPayment.setEnabled(false);

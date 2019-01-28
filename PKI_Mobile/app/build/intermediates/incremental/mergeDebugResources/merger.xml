@@ -3623,7 +3623,7 @@
         <item>Severity</item>
         <item>Status</item>
         <item>Date</item>
-    </string-array><string name="repair_request_refused">Repair request refused</string><string name="price">Price</string><string name="price_colon">Price :</string><string name="repair_request_accepted">Repair request accepted</string></file><file path="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </string-array><string name="repair_request_refused">Repair request refused</string><string name="price">Price</string><string name="price_colon">Price :</string><string name="repair_request_accepted">Repair request accepted</string><string name="craftsman_successfully_paid">Craftsman successfully paid</string></file><file path="F:\Google Drive\Projects\Android Studio PROJECTS\PKI_Mobile\PKI_Mobile\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

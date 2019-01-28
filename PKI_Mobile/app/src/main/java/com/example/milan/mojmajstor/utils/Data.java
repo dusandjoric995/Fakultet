@@ -1,6 +1,9 @@
 package com.example.milan.mojmajstor.utils;
 
 import android.app.Activity;
+import android.app.Application;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import com.example.milan.mojmajstor.LoginActivity;
 
@@ -12,7 +15,7 @@ public class Data {
     public ArrayList<User> users;
     public ArrayList<RepairRequest> repairRequests;
     public User currentUser;
-    private static Data instance = new Data();
+    private static Data instance = null;
     private static Activity currentActivity;
 
     public static Activity getCurrentActivity() {
@@ -21,6 +24,12 @@ public class Data {
 
     public static void setCurrentActivity(Activity currentActivity) {
         Data.currentActivity = currentActivity;
+    }
+
+    public static void initiate(){
+        if(instance == null){
+            instance = new Data();
+        }
     }
 
     private Data(){
@@ -97,11 +106,11 @@ public class Data {
         repairRequests.remove(repairRequest);
     }
 
-    public void findSelectedCraftsmen(ArrayList<User> selectedCraftsmen, String name, String profession, User user) {
+    public void findSelectedCraftsmen(ArrayList<User> selectedCraftsmen, String name, String profession, User currentUser) {
         selectedCraftsmen.clear();
-        if(user != null){
+        if(currentUser != null){
             for(User craftsman : users){
-                if(craftsman.getUserType() == LoginActivity.UserType.CRAFTSMAN && craftsman.getFirstAndLastName().toUpperCase().contains(name.toUpperCase()) && craftsman.getProfession().toUpperCase().contains(profession.toUpperCase()) && relatedCraftsmanAndClient(craftsman, user)){
+                if(craftsman.getUserType() == LoginActivity.UserType.CRAFTSMAN && craftsman.getFirstAndLastName().toUpperCase().contains(name.toUpperCase()) && craftsman.getProfession().toUpperCase().contains(profession.toUpperCase()) && relatedCraftsmanAndClient(craftsman, currentUser)){
                     selectedCraftsmen.add(craftsman);
                 }
             }
@@ -111,6 +120,30 @@ public class Data {
                 if(craftsman.getUserType() == LoginActivity.UserType.CRAFTSMAN && craftsman.getFirstAndLastName().toUpperCase().contains(name.toUpperCase()) && craftsman.getProfession().toUpperCase().contains(profession.toUpperCase())){
                     selectedCraftsmen.add(craftsman);
                 }
+            }
+        }
+    }
+
+    private void findFilteredRepairRequests(ArrayList<RepairRequest> filteredRepairRequests, EditText etFilterDescription, EditText etFilterClient, EditText etFilterDistrict, EditText etFilterAddress,
+                                            EditText etFilterDate, CheckBox cbSeverityLow, CheckBox cbSeverityMedium, CheckBox cbSeverityHigh,
+                                            CheckBox cbStatusOnHold, CheckBox cbStatusOffered, CheckBox cbStatusAccepted, CheckBox cbStatusPaid, CheckBox cbStatusRefused){
+        filteredRepairRequests.clear();
+        for(RepairRequest repairRequest : repairRequests){
+            if(repairRequest.getDescription().toUpperCase().contains(etFilterDescription.getText().toString()) &&
+                    repairRequest.getClient().getFirstAndLastName().toUpperCase().contains(etFilterClient.getText().toString()) &&
+                    repairRequest.getDistrict().toUpperCase().contains(etFilterDistrict.getText().toString()) &&
+                    repairRequest.getAddress().toUpperCase().contains(etFilterAddress.getText().toString()) &&
+                    repairRequest.getDate().toUpperCase().contains(etFilterDate.getText().toString()) &&
+                    (!cbSeverityLow.isChecked() || repairRequest.getSeverity() == RepairRequest.Severity.LOW) &&
+                    (!cbSeverityMedium.isChecked() || repairRequest.getSeverity() == RepairRequest.Severity.MEDIUM) &&
+                    (!cbSeverityHigh.isChecked() || repairRequest.getSeverity() == RepairRequest.Severity.HIGH) &&
+                    (!cbStatusOnHold.isChecked() || repairRequest.getStatus() == RepairRequest.Status.ON_HOLD) &&
+                    (!cbStatusOffered.isChecked() || repairRequest.getStatus() == RepairRequest.Status.OFFERED) &&
+                    (!cbStatusAccepted.isChecked() || repairRequest.getStatus() == RepairRequest.Status.ACCEPTED) &&
+                    (!cbStatusPaid.isChecked() || repairRequest.getStatus() == RepairRequest.Status.PAID) &&
+                    (!cbStatusRefused.isChecked() || repairRequest.getStatus() == RepairRequest.Status.REFUSED)
+                    ){
+                filteredRepairRequests.add(repairRequest);
             }
         }
     }

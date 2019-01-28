@@ -12,6 +12,7 @@ public class RepairRequest implements Serializable {
     private User craftsman;
     private String date;
     private Status status;
+    private int statusColor;
     private User client;
     private String district;
     private String address;
@@ -34,6 +35,32 @@ public class RepairRequest implements Serializable {
         this.price = price;
         this.listenerSet = false;
         this.severity = severity;
+        setStatusColor(status);
+    }
+
+    private void setStatusColor(Status status){
+        switch(status){
+            case ON_HOLD:{
+                statusColor = Data.getCurrentActivity().getResources().getColor(R.color.colorDarkGrey,null);
+                break;
+            }
+            case OFFERED:{
+                statusColor = Data.getCurrentActivity().getResources().getColor(R.color.colorBlue,null);
+                break;
+            }
+            case ACCEPTED:{
+                statusColor = Data.getCurrentActivity().getResources().getColor(R.color.colorPrimary,null);
+                break;
+            }
+            case PAID:{
+                statusColor = Data.getCurrentActivity().getResources().getColor(R.color.colorGold,null);
+                break;
+            }
+            case REFUSED:{
+                statusColor = Data.getCurrentActivity().getResources().getColor(R.color.colorAccent,null);
+                break;
+            }
+        }
     }
 
     public String getDescription() {
@@ -66,6 +93,7 @@ public class RepairRequest implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+        setStatusColor(status);
     }
 
     public User getClient() {
@@ -130,6 +158,14 @@ public class RepairRequest implements Serializable {
 
     public void setSeverity(Severity severity) {
         this.severity = severity;
+    }
+
+    public int getStatusColor() {
+        return statusColor;
+    }
+
+    public void setStatusColor(int statusColor) {
+        this.statusColor = statusColor;
     }
 
     public enum Severity {

@@ -8,7 +8,7 @@
 
 
     <TableLayout
-        android:id="@+id/tlRRC"
+        android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
             android:paddingVertical="6dp">
 
             <TextView
-                android:id="@+id/tvRRCDistrict"
+                android:id="@+id/tvDistrict"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -31,7 +31,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvRRCDistrictI"
+                android:id="@+id/tvDistrictI"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -43,7 +43,7 @@
             android:paddingVertical="6dp">
 
             <TextView
-                android:id="@+id/tvRRCAddress"
+                android:id="@+id/tvAddress"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -52,7 +52,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvRRCAddressI"
+                android:id="@+id/tvAddressI"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -64,7 +64,7 @@
             android:paddingVertical="6dp">
 
             <TextView
-                android:id="@+id/tvRRCPrice"
+                android:id="@+id/tvPrice"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -73,7 +73,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvRRCPriceI"
+                android:id="@+id/tvPriceI"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -84,19 +84,19 @@
 
 
     <LinearLayout
-        android:id="@+id/rlRRCPayment"
+        android:id="@+id/clPayment"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@id/rlRRCDistance1"
+        android:layout_alignTop="@id/rlDistancerPayment"
         android:layout_marginTop="15dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:weightSum="10">
 
         <TextView
-            android:id="@+id/tvRRCPaid"
+            android:id="@+id/tvPaid"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -107,7 +107,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvRRCPaidI"
+            android:id="@+id/tvPaidI"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -118,7 +118,7 @@
             android:textStyle="bold"/>
 
         <Button
-            android:id="@+id/btRRCPay"
+            android:id="@+id/btPay"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -138,18 +138,18 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/rlRRCRateAndComment"
+        android:id="@+id/rlRateAndComment"
         android:layout_width="210dp"
         android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@id/rlRRCDistance2"
+        android:layout_alignTop="@id/rlDistancerRateAndComment"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="15dp">
 
         <Button
-            android:id="@+id/btRRCRateCraftsman"
+            android:id="@+id/btRateCraftsman"
             android:layout_width="150dp"
             android:layout_height="47dp"
             android:layout_alignParentStart="true"
@@ -161,7 +161,7 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/btRRCCommentCraftsman"
+            android:id="@+id/btCommentCraftsman"
             android:layout_width="150dp"
             android:layout_height="47dp"
             android:layout_alignParentEnd="true"
@@ -177,18 +177,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignStart="@id/tlRRC"
-        android:layout_alignTop="@id/tlRRC"
-        android:layout_alignBottom="@id/tlRRC"
-        android:layout_alignEnd="@id/tlRRC"
+        android:layout_alignStart="@id/tl"
+        android:layout_alignTop="@id/tl"
+        android:layout_alignBottom="@id/tl"
+        android:layout_alignEnd="@id/tl"
         android:background="@drawable/table_border">
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rlRRCDistance1"
+        android:id="@+id/rlDistancerPayment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignBottom="@id/tlRRC"
+        android:layout_alignBottom="@id/tl"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="-15dp"
@@ -198,10 +198,10 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rlRRCDistance2"
+        android:id="@+id/rlDistancerRateAndComment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignBottom="@id/rlRRCPayment"
+        android:layout_alignBottom="@id/clPayment"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="-15dp"

@@ -97,6 +97,7 @@
     <string name="repair_request_refused">Repair request refused</string>
     <string name="price">Price</string>
     <string name="repair_request_accepted">Repair request accepted</string>
+    <string name="craftsman_successfully_paid">Craftsman successfully paid</string>
 
     <string-array name="sort">
         <item>Description</item>

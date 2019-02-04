@@ -28,6 +28,7 @@ public class ProfilePictureFragment extends Fragment {
     private TextView tvRateValue;
     private TextView tvPassword;
     private TextView tvShowComments;
+    private EditText etProfileNameI;
     private EditText etProfessionI;
     private EditText etEmailI;
     private EditText etPasswordI;
@@ -57,6 +58,7 @@ public class ProfilePictureFragment extends Fragment {
         tvRateValue = view.findViewById(R.id.tvPRateValue);
         tvShowComments = view.findViewById(R.id.tvPShowComments);
         tvPassword = view.findViewById(R.id.tvPPassword);
+        etProfileNameI = view.findViewById(R.id.etPProfileNameI);
         etProfessionI = view.findViewById(R.id.etPProfessionI);
         etEmailI = view.findViewById(R.id.etPEmailI);
         etPasswordI = view.findViewById(R.id.etPPasswordI);
@@ -93,8 +95,10 @@ public class ProfilePictureFragment extends Fragment {
             }
         });
 
+        tvProfileName.setVisibility(View.VISIBLE);
         tvProfession.setVisibility(View.VISIBLE);
         tvEmailI.setVisibility(View.VISIBLE);
+        etProfileNameI.setVisibility(View.INVISIBLE);
         etProfessionI.setVisibility(View.INVISIBLE);
         etEmailI.setVisibility(View.INVISIBLE);
         btSaveChanges.setVisibility(View.INVISIBLE);
@@ -108,15 +112,18 @@ public class ProfilePictureFragment extends Fragment {
             btRequestRepairOrEditProfile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    tvProfileName.setVisibility(View.INVISIBLE);
                     tvProfession.setVisibility(View.INVISIBLE);
                     tvEmailI.setVisibility(View.INVISIBLE);
                     btRequestRepairOrEditProfile.setVisibility(View.INVISIBLE);
+                    etProfileNameI.setVisibility(View.VISIBLE);
                     etProfessionI.setVisibility(View.VISIBLE);
                     etEmailI.setVisibility(View.VISIBLE);
                     btSaveChanges.setVisibility(View.VISIBLE);
                     tvPassword.setVisibility(View.VISIBLE);
                     etPasswordI.setVisibility(View.VISIBLE);
 
+                    etProfileNameI.setText(tvProfileName.getText().toString());
                     etProfessionI.setText(tvProfession.getText().toString());
                     etEmailI.setText(tvEmailI.getText().toString());
                     etPasswordI.setText(data.currentUser.getPassword());
@@ -125,19 +132,35 @@ public class ProfilePictureFragment extends Fragment {
             btSaveChanges.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    tvProfileName.setVisibility(View.VISIBLE);
                     tvProfession.setVisibility(View.VISIBLE);
                     tvEmailI.setVisibility(View.VISIBLE);
                     btRequestRepairOrEditProfile.setVisibility(View.VISIBLE);
+                    etProfileNameI.setVisibility(View.INVISIBLE);
                     etProfessionI.setVisibility(View.INVISIBLE);
                     etEmailI.setVisibility(View.INVISIBLE);
                     btSaveChanges.setVisibility(View.INVISIBLE);
                     tvPassword.setVisibility(View.GONE);
                     etPasswordI.setVisibility(View.GONE);
 
+                    String firstAndLastName = etProfileNameI.getText().toString();
+                    if(firstAndLastName.equals("")){
+                        data.currentUser.setFirstName("");
+                        data.currentUser.setLastName("");
+                    }
+                    else{
+                        if(firstAndLastName.split(" ").length == 1){
+                            data.currentUser.setFirstName(firstAndLastName.split(" ")[0]);
+                        }
+                        else{
+                            data.currentUser.setFirstName(firstAndLastName.split(" ")[0]);
+                            data.currentUser.setLastName(firstAndLastName.split(" ")[1]);
+                        }
+                    }
                     data.currentUser.setEmail(etEmailI.getText().toString());
                     data.currentUser.setProfession(etProfessionI.getText().toString());
                     data.currentUser.setPassword(etPasswordI.getText().toString());
+                    tvProfileName.setText(data.currentUser.getFirstAndLastName());
                     tvProfession.setText(data.currentUser.getProfession());
                     tvEmailI.setText(data.currentUser.getEmail());
                 }

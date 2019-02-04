@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/tvPProfileName"
-        android:layout_width="220dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
@@ -26,10 +26,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/etPProfileNameI"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textCapSentences"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvPProfessionI"
         android:layout_width="190dp"
-        android:layout_height="wrap_content"
+        android:layout_height="21dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:gravity="center_vertical"

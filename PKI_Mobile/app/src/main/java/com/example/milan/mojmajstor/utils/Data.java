@@ -124,24 +124,31 @@ public class Data {
         }
     }
 
-    private void findFilteredRepairRequests(ArrayList<RepairRequest> filteredRepairRequests, EditText etFilterDescription, EditText etFilterClient, EditText etFilterDistrict, EditText etFilterAddress,
+    public void findFilteredRepairRequests(ArrayList<RepairRequest> filteredRepairRequests, User currentCraftsman, EditText etFilterDescription, EditText etFilterClient, EditText etFilterDistrict, EditText etFilterAddress,
                                             EditText etFilterDate, CheckBox cbSeverityLow, CheckBox cbSeverityMedium, CheckBox cbSeverityHigh,
                                             CheckBox cbStatusOnHold, CheckBox cbStatusOffered, CheckBox cbStatusAccepted, CheckBox cbStatusPaid, CheckBox cbStatusRefused){
         filteredRepairRequests.clear();
         for(RepairRequest repairRequest : repairRequests){
-            if(repairRequest.getDescription().toUpperCase().contains(etFilterDescription.getText().toString()) &&
-                    repairRequest.getClient().getFirstAndLastName().toUpperCase().contains(etFilterClient.getText().toString()) &&
-                    repairRequest.getDistrict().toUpperCase().contains(etFilterDistrict.getText().toString()) &&
-                    repairRequest.getAddress().toUpperCase().contains(etFilterAddress.getText().toString()) &&
-                    repairRequest.getDate().toUpperCase().contains(etFilterDate.getText().toString()) &&
-                    (!cbSeverityLow.isChecked() || repairRequest.getSeverity() == RepairRequest.Severity.LOW) &&
-                    (!cbSeverityMedium.isChecked() || repairRequest.getSeverity() == RepairRequest.Severity.MEDIUM) &&
-                    (!cbSeverityHigh.isChecked() || repairRequest.getSeverity() == RepairRequest.Severity.HIGH) &&
-                    (!cbStatusOnHold.isChecked() || repairRequest.getStatus() == RepairRequest.Status.ON_HOLD) &&
-                    (!cbStatusOffered.isChecked() || repairRequest.getStatus() == RepairRequest.Status.OFFERED) &&
-                    (!cbStatusAccepted.isChecked() || repairRequest.getStatus() == RepairRequest.Status.ACCEPTED) &&
-                    (!cbStatusPaid.isChecked() || repairRequest.getStatus() == RepairRequest.Status.PAID) &&
-                    (!cbStatusRefused.isChecked() || repairRequest.getStatus() == RepairRequest.Status.REFUSED)
+            if(repairRequest.getCraftsman() == currentCraftsman &&
+                    repairRequest.getDescription().toUpperCase().contains(etFilterDescription.getText().toString().toUpperCase()) &&
+                    repairRequest.getClient().getFirstAndLastName().toUpperCase().contains(etFilterClient.getText().toString().toUpperCase()) &&
+                    repairRequest.getDistrict().toUpperCase().contains(etFilterDistrict.getText().toString().toUpperCase()) &&
+                    repairRequest.getAddress().toUpperCase().contains(etFilterAddress.getText().toString().toUpperCase()) &&
+                    repairRequest.getDate().toUpperCase().contains(etFilterDate.getText().toString().toUpperCase()) &&
+                    (
+                        (!cbSeverityLow.isChecked() && !cbSeverityMedium.isChecked() && !cbSeverityHigh.isChecked()) ||
+                        (cbSeverityLow.isChecked() && repairRequest.getSeverity() == RepairRequest.Severity.LOW) ||
+                        (cbSeverityMedium.isChecked() && repairRequest.getSeverity() == RepairRequest.Severity.MEDIUM) ||
+                        (cbSeverityHigh.isChecked() && repairRequest.getSeverity() == RepairRequest.Severity.HIGH)
+                    ) &&
+                    (
+                            (!cbStatusOnHold.isChecked() && !cbStatusOffered.isChecked() && !cbStatusAccepted.isChecked() && !cbStatusPaid.isChecked() && !cbStatusRefused.isChecked()) ||
+                            (cbStatusOnHold.isChecked() && repairRequest.getStatus() == RepairRequest.Status.ON_HOLD) ||
+                            (cbStatusOffered.isChecked() && repairRequest.getStatus() == RepairRequest.Status.OFFERED) ||
+                            (cbStatusAccepted.isChecked() && repairRequest.getStatus() == RepairRequest.Status.ACCEPTED) ||
+                            (cbStatusPaid.isChecked() && repairRequest.getStatus() == RepairRequest.Status.PAID) ||
+                            (cbStatusRefused.isChecked() && repairRequest.getStatus() == RepairRequest.Status.REFUSED)
+                    )
                     ){
                 filteredRepairRequests.add(repairRequest);
             }
@@ -230,6 +237,31 @@ public class Data {
                         for (int i = 0; i < repairRequests.size() - 1; i++) {
                             for (int j = i; j < repairRequests.size(); j++) {
                                 if (repairRequests.get(i).getStatus().ordinal() < repairRequests.get(j).getStatus().ordinal()) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 4: { // Craftsman
+                    if (repairRequests.get(0).getCraftsman().getFirstAndLastName().toUpperCase().compareTo(repairRequests.get(repairRequests.size() - 1).getCraftsman().getFirstAndLastName().toUpperCase()) >= 0) {
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getCraftsman().getFirstAndLastName().toUpperCase().compareTo(repairRequests.get(j).getCraftsman().getFirstAndLastName().toUpperCase()) > 0) {
+                                    RepairRequest temp = repairRequests.get(i);
+                                    repairRequests.set(i, repairRequests.get(j));
+                                    repairRequests.set(j, temp);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        for (int i = 0; i < repairRequests.size() - 1; i++) {
+                            for (int j = i; j < repairRequests.size(); j++) {
+                                if (repairRequests.get(i).getCraftsman().getFirstAndLastName().toUpperCase().compareTo(repairRequests.get(j).getCraftsman().getFirstAndLastName().toUpperCase()) < 0) {
                                     RepairRequest temp = repairRequests.get(i);
                                     repairRequests.set(i, repairRequests.get(j));
                                     repairRequests.set(j, temp);

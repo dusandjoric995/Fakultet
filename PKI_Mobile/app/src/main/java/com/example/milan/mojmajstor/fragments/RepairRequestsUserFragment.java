@@ -10,6 +10,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.milan.mojmajstor.LoginActivity;
 import com.example.milan.mojmajstor.R;
@@ -27,20 +28,26 @@ public class RepairRequestsUserFragment extends Fragment {
     private Data data;
     private ExpandableListView elvRepairRequests;
     private RepairRequestsUserExpandableListViewAdapter elvRepairRequestsAdapter;
-    ArrayList<RelativeLayout> repairRequestsLayouts;
-    ArrayList<RelativeLayout> repairRequestsDetailLayouts;
-    ArrayList<RepairRequest> repairRequests;
-    ArrayList<Integer> checkedRequests;
+    private ArrayList<RelativeLayout> repairRequestsLayouts;
+    private ArrayList<RelativeLayout> repairRequestsDetailLayouts;
+    private ArrayList<RepairRequest> repairRequests;
+    private ArrayList<Integer> checkedRequests;
+    private TextView tvHeaderStatus;
+    private TextView tvHeaderCraftsman;
+    private TextView tvHeaderDescription;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_repair_request_user, container, false);
+        return inflater.inflate(R.layout.fragment_repair_requests_user, container, false);
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
         data = Data.getInstance();
         elvRepairRequests = view.findViewById(R.id.elvRR);
         btAdditionalOptions = view.findViewById(R.id.btRRAdditionalOptions);
+        tvHeaderDescription= view.findViewById(R.id.tvHeaderDescription);
+        tvHeaderCraftsman = view.findViewById(R.id.tvHeaderCraftsman);
+        tvHeaderStatus = view.findViewById(R.id.tvHeaderStatus);
 
         repairRequestsLayouts = new ArrayList<>();
         repairRequestsDetailLayouts = new ArrayList<>();
@@ -82,6 +89,10 @@ public class RepairRequestsUserFragment extends Fragment {
                 popupMenu.show();
             }
         });
+
+        tvHeaderStatus.setOnClickListener(new HeaderOnClickListener(3));
+        tvHeaderDescription.setOnClickListener(new HeaderOnClickListener(0));
+        tvHeaderCraftsman.setOnClickListener(new HeaderOnClickListener(4));
     }
 
     @Override
@@ -91,6 +102,26 @@ public class RepairRequestsUserFragment extends Fragment {
         elvRepairRequestsAdapter.notifyDataSetChanged();
         for(int i = 0; i < repairRequests.size(); i++){
             elvRepairRequests.collapseGroup(i);
+        }
+        if(repairRequests.size() > 0){
+            if (repairRequests.get(0).getStatus().ordinal() >= repairRequests.get(repairRequests.size() - 1).getStatus().ordinal()) {
+                data.sortRepairRequests(repairRequests, 3);
+            }
+        } // Hack :)
+    }
+
+    private class HeaderOnClickListener implements View.OnClickListener {
+
+        private int sortingOption;
+
+        public HeaderOnClickListener(int sortingOption){
+            this.sortingOption = sortingOption;
+        }
+
+        @Override
+        public void onClick(View v) {
+            data.sortRepairRequests(repairRequests, sortingOption);
+            elvRepairRequestsAdapter.notifyDataSetChanged();
         }
     }
 }

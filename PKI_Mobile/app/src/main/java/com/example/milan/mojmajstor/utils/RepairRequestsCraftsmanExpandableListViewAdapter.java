@@ -2,6 +2,7 @@ package com.example.milan.mojmajstor.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,19 +101,27 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
             convertView = inflater.inflate(R.layout.list_view_child_item_repair_request_craftsman, null);
         }
 
-        TextView tvClient = convertView.findViewById(R.id.tvClientI);
-        TextView tvDistrict = convertView.findViewById(R.id.tvDistrictI);
-        TextView tvAddress = convertView.findViewById(R.id.tvAddressI);
+        ConstraintLayout clOffer = convertView.findViewById(R.id.clOffer);
+        ConstraintLayout clPaidI = convertView.findViewById(R.id.clPaidI);
+        TextView tvClientI = convertView.findViewById(R.id.tvClientI);
+        TextView tvDistrictI = convertView.findViewById(R.id.tvDistrictI);
+        TextView tvAddressI = convertView.findViewById(R.id.tvAddressI);
+        TextView tvPaymentMethodI = convertView.findViewById(R.id.tvPaymentMethodI);
+        TextView tvPaid = convertView.findViewById(R.id.tvPaid);
+        TextView tvPaidI = convertView.findViewById(R.id.tvPaidI);
         final EditText etPrice = convertView.findViewById(R.id.etPrice);
         final TextView tvPrice = convertView.findViewById(R.id.tvPrice);
         final TextView tvPriceI = convertView.findViewById(R.id.tvPriceI);
         final Button btRefuse = convertView.findViewById(R.id.btRefuse);
         final Button btAccept = convertView.findViewById(R.id.btAccept);
+        Button btConfirmPayment = convertView.findViewById(R.id.btConfirmPayment);
 
-        tvClient.setText(repairRequest.getClient().getFirstAndLastName());
-        tvDistrict.setText(repairRequest.getDistrict());
-        tvAddress.setText(repairRequest.getAddress());
+        tvClientI.setText(repairRequest.getClient().getFirstAndLastName());
+        tvDistrictI.setText(repairRequest.getDistrict());
+        tvAddressI.setText(repairRequest.getAddress());
         tvPriceI.setText(String.format("%.2f", repairRequest.getPrice()) + " RSD");
+        tvPaymentMethodI.setText(repairRequest.isCreditCard() ? "Creddit card" : "Cash");
+        tvPaidI.setText(repairRequest.getPaid() + "");
 
         etPrice.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -152,6 +161,14 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
             }
         });
 
+        btConfirmPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repairRequest.setStatus(RepairRequest.Status.PAID);
+                notifyDataSetChanged();
+            }
+        });
+
         if(groupPosition % 2 == 0){
             convertView.setBackgroundResource(R.drawable.table_row_even);
         }
@@ -159,21 +176,56 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
             convertView.setBackgroundResource(R.drawable.table_row_odd);
         }
 
-        if(repairRequest.getStatus() != RepairRequest.Status.ON_HOLD){
-            btAccept.setVisibility(View.GONE);
-            btRefuse.setVisibility(View.GONE);
-            etPrice.setVisibility(View.GONE);
-            tvPrice.setVisibility(View.VISIBLE);
-            tvPriceI.setVisibility(View.VISIBLE);
+        switch (repairRequest.getStatus()){
+            case ON_HOLD:{
+                clOffer.setVisibility(View.VISIBLE);
+                tvPrice.setVisibility(View.GONE);
+                tvPriceI.setVisibility(View.GONE);
+                tvPaid.setVisibility(View.GONE);
+                clPaidI.setVisibility(View.GONE);
+                break;
+            }
+            case OFFERED:{
+                clOffer.setVisibility(View.GONE);
+                tvPrice.setVisibility(View.VISIBLE);
+                tvPriceI.setVisibility(View.VISIBLE);
+                tvPaid.setVisibility(View.GONE);
+                clPaidI.setVisibility(View.GONE);
+                break;
+            }
+            case ACCEPTED:{
+                clOffer.setVisibility(View.GONE);
+                tvPrice.setVisibility(View.VISIBLE);
+                tvPriceI.setVisibility(View.VISIBLE);
+                tvPaid.setVisibility(View.VISIBLE);
+                clPaidI.setVisibility(View.VISIBLE);
+                if(repairRequest.isCreditCard()){
+                    tvPaidI.setVisibility(View.VISIBLE);
+                    btConfirmPayment.setVisibility(View.GONE);
+                }
+                else{
+                    tvPaidI.setVisibility(View.GONE);
+                    btConfirmPayment.setVisibility(View.VISIBLE);
+                }
+                break;
+            }
+            case PAID:{
+                clOffer.setVisibility(View.GONE);
+                tvPrice.setVisibility(View.VISIBLE);
+                tvPriceI.setVisibility(View.VISIBLE);
+                tvPaid.setVisibility(View.GONE);
+                clPaidI.setVisibility(View.GONE);
+                break;
+            }
+            case REFUSED:{
+                clOffer.setVisibility(View.GONE);
+                tvPrice.setVisibility(View.VISIBLE);
+                tvPriceI.setVisibility(View.VISIBLE);
+                tvPaid.setVisibility(View.GONE);
+                clPaidI.setVisibility(View.GONE);
+                break;
+            }
         }
-        else{
-            btAccept.setVisibility(View.VISIBLE);
-            btRefuse.setVisibility(View.VISIBLE);
-            etPrice.setVisibility(View.VISIBLE);
-            tvPrice.setVisibility(View.GONE);
-            tvPriceI.setVisibility(View.GONE);
-        }
-
         return convertView;
     }
 

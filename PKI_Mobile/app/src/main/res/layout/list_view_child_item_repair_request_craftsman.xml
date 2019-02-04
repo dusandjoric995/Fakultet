@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:text="@string/client_colon"
-        android:textSize="16dp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvClientI"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvClientI" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginTop="10dp"
-        android:textSize="16dp"
+        android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/district_colon"
-        android:textSize="16dp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvDistrictI"
         app:layout_constraintStart_toStartOf="@+id/tvClient"
         app:layout_constraintTop_toTopOf="@+id/tvDistrictI" />
@@ -42,8 +42,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="10dp"
-        android:textSize="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvClientI" />
 
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/address_colon"
-        android:textSize="16dp"
+        android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvAddressI"
         app:layout_constraintStart_toStartOf="@+id/tvDistrict"
         app:layout_constraintTop_toTopOf="@+id/tvAddressI" />
@@ -62,20 +62,39 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="10dp"
-        android:textSize="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDistrictI" />
+
+    <TextView
+        android:id="@+id/tvPaymentMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paying_method"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPaymentMethodI"
+        app:layout_constraintStart_toStartOf="@+id/tvAddress"
+        app:layout_constraintTop_toTopOf="@+id/tvPaymentMethodI" />
+
+    <TextView
+        android:id="@+id/tvPaymentMethodI"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddressI" />
 
     <TextView
         android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:text="@string/price_colon"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvAddress"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPriceI"
+        app:layout_constraintStart_toStartOf="@+id/tvPaymentMethod"
         app:layout_constraintTop_toTopOf="@+id/tvPriceI" />
 
     <TextView
@@ -83,58 +102,109 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="10dp"
-        android:textSize="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddressI" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPaymentMethodI" />
 
-    <Button
-        android:id="@+id/btRefuse"
+    <TextView
+        android:id="@+id/tvPaid"
         android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/button_accent"
-        android:text="@string/refuse"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/btAccept"
+        android:layout_height="wrap_content"
+        android:text="@string/rr_paid"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clPaidI"
+        app:layout_constraintStart_toStartOf="@+id/tvPrice"
+        app:layout_constraintTop_toTopOf="@+id/clPaidI" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clPaidI"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btAccept" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPriceI">
 
-    <Button
-        android:id="@+id/btAccept"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvPaidI"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btConfirmPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/button_gold"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/confirm_payment"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clOffer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/button_primary"
-        android:text="@string/accept"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/etPrice"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddressI" />
-
-    <EditText
-        android:id="@+id/etPrice"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="@string/price"
-        android:inputType="numberDecimal"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btAccept"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btAccept" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clPaidI">
+
+        <Button
+            android:id="@+id/btRefuse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_accent"
+            android:text="@string/refuse"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/btAccept"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btAccept" />
+
+        <Button
+            android:id="@+id/btAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_primary"
+            android:text="@string/accept"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@+id/etPrice" />
+
+        <EditText
+            android:id="@+id/etPrice"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/price"
+            android:inputType="numberDecimal"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btAccept"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btAccept" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
 
     <RelativeLayout
         android:id="@+id/rlDistancerFooter"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/clOffer"/>
 
 
 </android.support.constraint.ConstraintLayout>

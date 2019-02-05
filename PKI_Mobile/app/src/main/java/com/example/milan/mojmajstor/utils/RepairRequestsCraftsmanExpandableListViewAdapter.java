@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.milan.mojmajstor.LoginActivity;
+import com.example.milan.mojmajstor.MainActivity;
 import com.example.milan.mojmajstor.R;
 
 import java.util.ArrayList;
@@ -120,8 +122,9 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
         tvDistrictI.setText(repairRequest.getDistrict());
         tvAddressI.setText(repairRequest.getAddress());
         tvPriceI.setText(String.format("%.2f", repairRequest.getPrice()) + " RSD");
-        tvPaymentMethodI.setText(repairRequest.isCreditCard() ? "Creddit card" : "Cash");
+        tvPaymentMethodI.setText(repairRequest.isCreditCard() ? thisActivity.getResources().getString(R.string.credit_card) : thisActivity.getResources().getString(R.string.cash));
         tvPaidI.setText(repairRequest.getPaid() + "");
+        etPrice.setText("");
 
         etPrice.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -149,6 +152,7 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
                     notifyDataSetChanged();
                     ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.repair_request_accepted));
                 }
+                MainActivity.hideKeyboardFrom(thisActivity, btAccept);
             }
         });
 
@@ -158,6 +162,7 @@ public class RepairRequestsCraftsmanExpandableListViewAdapter extends BaseExpand
                 ToastWriter.write(thisActivity, thisActivity.getResources().getString(R.string.repair_request_refused));
                 repairRequest.setStatus(RepairRequest.Status.REFUSED);
                 notifyDataSetChanged();
+                MainActivity.hideKeyboardFrom(thisActivity, btRefuse);
             }
         });
 

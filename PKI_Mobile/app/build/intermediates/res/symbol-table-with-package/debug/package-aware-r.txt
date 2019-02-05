@@ -1451,6 +1451,7 @@ id top
 id topPanel
 id touch_outside
 id trHeader
+id trPrice
 id trRRCCHeader
 id trRRG
 id trRRHeader
@@ -1487,6 +1488,8 @@ id tvPRateValue
 id tvPShowComments
 id tvPaid
 id tvPaidI
+id tvPayingMethod
+id tvPayingMethodI
 id tvPayingWithCash
 id tvPaymentMethod
 id tvPaymentMethodI

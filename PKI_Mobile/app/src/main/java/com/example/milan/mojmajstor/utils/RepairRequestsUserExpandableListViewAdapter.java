@@ -14,6 +14,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 
@@ -21,6 +22,8 @@ import com.example.milan.mojmajstor.R;
 import com.example.milan.mojmajstor.dialogs.CommentDialog;
 import com.example.milan.mojmajstor.dialogs.PaymentDialog;
 import com.example.milan.mojmajstor.dialogs.RateDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -150,6 +153,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
         TextView tvSeverity = convertView.findViewById(R.id.tvSeverityI);
         TextView tvPrice = convertView.findViewById(R.id.tvPriceI);
         TextView tvPayingWithCash = convertView.findViewById(R.id.tvPayingWithCash);
+        TextView tvPayingMethod = convertView.findViewById(R.id.tvPayingMethodI);
         final TextView tvPaid = convertView.findViewById(R.id.tvPaid);
         final TextView tvPaidI = convertView.findViewById(R.id.tvPaidI);
         final Button btNewPayment = convertView.findViewById(R.id.btPay);
@@ -157,6 +161,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
         Button btCommentCraftsman = convertView.findViewById(R.id.btCommentCraftsman);
         Button btRefuse = convertView.findViewById(R.id.btRefuse);
         Button btAccept = convertView.findViewById(R.id.btAccept);
+        TableRow trPrice = convertView.findViewById(R.id.trPrice);
 
         btNewPayment.setEnabled(true);
         btRateCraftsman.setEnabled(true);
@@ -203,6 +208,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
         tvAddress.setText(repairRequest.getAddress());
         tvSeverity.setText(repairRequest.getSeverity().toString());
         tvPrice.setText(String.format("%.2f", repairRequest.getPrice()) + " RSD");
+        tvPayingMethod.setText(repairRequest.isCreditCard() ? thisActivity.getResources().getString(R.string.credit_card) : thisActivity.getResources().getString(R.string.cash));
         if(repairRequest.isCreditCard()){
             tvPaidI.setText(String.format("%.2f", repairRequest.getPaid()) + " RSD");
             btNewPayment.setVisibility(View.VISIBLE);
@@ -219,6 +225,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
 
         switch (repairRequest.getStatus()){
             case ON_HOLD:{
+                trPrice.setVisibility(View.GONE);
                 clPayment.setVisibility(View.GONE);
                 rlDistancerPayment.setVisibility(View.GONE);
                 clOffer.setVisibility(View.GONE);
@@ -228,6 +235,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
                 break;
             }
             case OFFERED:{
+                trPrice.setVisibility(View.VISIBLE);
                 clPayment.setVisibility(View.GONE);
                 rlDistancerPayment.setVisibility(View.GONE);
                 clOffer.setVisibility(View.VISIBLE);
@@ -237,8 +245,15 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
                 break;
             }
             case ACCEPTED:{
-                clPayment.setVisibility(View.VISIBLE);
-                rlDistancerPayment.setVisibility(View.VISIBLE);
+                trPrice.setVisibility(View.VISIBLE);
+                if(repairRequest.isCreditCard()){
+                    clPayment.setVisibility(View.VISIBLE);
+                    rlDistancerPayment.setVisibility(View.VISIBLE);
+                }
+                else{
+                    clPayment.setVisibility(View.GONE);
+                    rlDistancerPayment.setVisibility(View.GONE);
+                }
                 clOffer.setVisibility(View.GONE);
                 rlDistancerOffer.setVisibility(View.GONE);
                 rlRateAndComment.setVisibility(View.GONE);
@@ -246,6 +261,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
                 break;
             }
             case PAID:{
+                trPrice.setVisibility(View.VISIBLE);
                 clPayment.setVisibility(View.GONE);
                 rlDistancerPayment.setVisibility(View.GONE);
                 clOffer.setVisibility(View.GONE);
@@ -255,6 +271,7 @@ public class RepairRequestsUserExpandableListViewAdapter extends BaseExpandableL
                 break;
             }
             case REFUSED:{
+                trPrice.setVisibility(View.VISIBLE);
                 clPayment.setVisibility(View.GONE);
                 rlDistancerPayment.setVisibility(View.GONE);
                 clOffer.setVisibility(View.GONE);

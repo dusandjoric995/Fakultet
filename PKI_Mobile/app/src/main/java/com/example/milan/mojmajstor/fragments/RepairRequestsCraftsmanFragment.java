@@ -32,9 +32,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class RepairRequestsCraftsmanFragment extends Fragment {
+public class RepairRequestsCraftsmanFragment extends Fragment implements OnMapReadyCallback{
 
     private Activity thisActivity;
+    private Fragment thisFragment;
     private ExpandableListView elv;
     private RepairRequestsCraftsmanExpandableListViewAdapter elvAdapter;
     private ArrayList<RepairRequest> repairRequests;
@@ -50,21 +51,7 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
-        View view = inflater.inflate(R.layout.fragment_repair_requests_craftsman, container, false);
-        mapView = view.findViewById(R.id.mapView);
-        Bundle mapViewBundle = null;
-        if(savedInstanceState != null){
-            mapViewBundle = savedInstanceState.getBundle("MapViewBundleKey");
-        }
-        mapView.onCreate(mapViewBundle);
-        mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_repair_requests_craftsman, container, false);
     }
 
     @Override
@@ -74,6 +61,7 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
         data = Data.getInstance();
         data.getCurrentUserRepairRequests(repairRequests, LoginActivity.UserType.CRAFTSMAN);
         thisActivity = getActivity();
+        thisFragment = this;
 
         svFilter = view.findViewById(R.id.svFilter);
         rlFilterBorderTop = view.findViewById(R.id.rlFilterBorderTop);
@@ -97,6 +85,7 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
         cbStatusPaid = view.findViewById(R.id.cbStatusPaid);
         cbStatusRefused = view.findViewById(R.id.cbStatusRefused);
         btMapOrTable = view.findViewById(R.id.btMapOrTable);
+        mapView = view.findViewById(R.id.mapView);
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -110,6 +99,8 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
                         etFilterAddress, etFilterDate, cbSeverityLow, cbSeverityMedium, cbSeverityHigh,
                         cbStatusOnHold, cbStatusOffered, cbStatusAccepted, cbStatusPaid, cbStatusRefused);
                 elvAdapter.notifyDataSetChanged();
+                mapView.getMapAsync((OnMapReadyCallback) thisFragment);
+
             }
 
             @Override
@@ -125,6 +116,7 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
                         etFilterAddress, etFilterDate, cbSeverityLow, cbSeverityMedium, cbSeverityHigh,
                         cbStatusOnHold, cbStatusOffered, cbStatusAccepted, cbStatusPaid, cbStatusRefused);
                 elvAdapter.notifyDataSetChanged();
+                mapView.getMapAsync((OnMapReadyCallback) thisFragment);
             }
         };
 
@@ -189,6 +181,12 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
             }
         });
 
+        Bundle mapViewBundle = null;
+        if(savedInstanceState != null){
+            mapViewBundle = savedInstanceState.getBundle("MapViewBundleKey");
+        }
+        mapView.onCreate(mapViewBundle);
+
     }
 
     private class HeaderOnClickListener implements View.OnClickListener {
@@ -238,6 +236,7 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
         mapView.onResume();
         mapView.setVisibility(View.INVISIBLE);
         elv.setVisibility(View.VISIBLE);
+        mapView.getMapAsync((OnMapReadyCallback) thisFragment);
     }
 
     @Override
@@ -281,5 +280,15 @@ public class RepairRequestsCraftsmanFragment extends Fragment {
         }
 
         mapView.onSaveInstanceState(mapViewBundle);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.clear();
+        for(RepairRequest repairRequest : repairRequests){
+            googleMap.addMarker(new MarkerOptions().
+                    position(new LatLng(repairRequest.getCoorditnates().first, repairRequest.getCoorditnates().second)).
+                    title(repairRequest.getDescription() + ", " + repairRequest.getClient().getFirstAndLastName()));
+        }
     }
 }

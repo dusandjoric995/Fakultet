@@ -1,6 +1,7 @@
 package com.example.milan.mojmajstor.utils;
 
 import android.content.res.Resources;
+import android.util.Pair;
 
 import com.example.milan.mojmajstor.R;
 
@@ -21,6 +22,7 @@ public class RepairRequest implements Serializable {
     private double price;
     private boolean listenerSet;
     private Severity severity;
+    private Pair<Double, Double> coorditnates;
 
     public RepairRequest(String description, User craftsman, String date, Status status, User client, String district, String address, boolean creditCard, double paid, double price, Severity severity) {
         this.description = description;
@@ -36,6 +38,7 @@ public class RepairRequest implements Serializable {
         this.listenerSet = false;
         this.severity = severity;
         setStatusColor(status);
+        coorditnates = new Pair<>(Math.random() * 20, Math.random() * 20);
     }
 
     private void setStatusColor(Status status){
@@ -166,6 +169,14 @@ public class RepairRequest implements Serializable {
 
     public void setStatusColor(int statusColor) {
         this.statusColor = statusColor;
+    }
+
+    public Pair<Double, Double> getCoorditnates() {
+        return coorditnates;
+    }
+
+    public void setCoorditnates(Pair<Double, Double> coorditnates) {
+        this.coorditnates = coorditnates;
     }
 
     public enum Severity {
